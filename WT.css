@@ -2354,7 +2354,7 @@ font-size: 14px;
     color: white;
 }
 
-/* Speech Bubbles */
+/* Speech Bubbles - Bounded strictly within column boundaries */
 .speech-bubble {
     position: absolute;
     background: rgba(255, 255, 255, 0.96);
@@ -2366,38 +2366,32 @@ font-size: 14px;
     font-weight: 800;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
     border: 2px solid #38bdf8;
-    z-index: 12;
+    z-index: 20;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
     animation: bubblePop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .wife-speech {
-    top: -75px;
-    right: -10px;
+    top: -65px;
+    right: 10px;
+    left: auto;
     border-color: #f43f5e;
     background: #fff1f2;
     color: #9f1239;
-    max-width: 170px;
+    max-width: 150px;
 }
 
 .husband-speech {
-    top: -115px;
-    left: -20px;
+    top: -125px;
+    left: 10px;
+    right: auto;
     border-color: #0284c7;
     background: #f0f9ff;
     color: #0369a1;
-    max-width: 170px;
-}
-
-@keyframes bubblePop {
-    0% {
-        transform: scale(0.4);
-        opacity: 0;
-    }
-
-    100% {
-        transform: scale(1.0);
-        opacity: 1;
-    }
+    max-width: 155px;
 }
 
 /* Nurse in Blue Scrub with Stretcher */
@@ -2435,11 +2429,12 @@ font-size: 14px;
 
 .nurse-speech {
     top: -85px;
-    left: 20px;
+    right: 15px;
+    left: auto;
     border-color: #10b981;
     background: #ecfdf5;
     color: #047857;
-    max-width: 190px;
+    max-width: 165px;
 }
 
 /* Transfer Overlay */
