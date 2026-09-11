@@ -2032,6 +2032,76 @@ function initGameEnginePage() {
     loadStage(0);
 }
 
+function getTombstoneSVG() {
+    return `
+    <div class="tombstone-container">
+        <svg viewBox="0 0 240 220" class="tombstone-svg" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="tombStoneGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#94a3b8"/>
+                    <stop offset="60%" stop-color="#64748b"/>
+                    <stop offset="100%" stop-color="#475569"/>
+                </linearGradient>
+                <radialGradient id="soilGrad" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#a16207"/>
+                    <stop offset="70%" stop-color="#78350f"/>
+                    <stop offset="100%" stop-color="#451a03"/>
+                </radialGradient>
+            </defs>
+            <!-- Ground Shadow -->
+            <ellipse cx="120" cy="205" rx="100" ry="12" fill="#000000" opacity="0.25"/>
+
+            <!-- Pebbles / Small Rocks on Ground -->
+            <path d="M 22 195 Q 18 190 26 188 Q 32 192 28 198 Z" fill="#64748b" stroke="#334155" stroke-width="1.5"/>
+            <path d="M 40 200 Q 36 195 44 193 Q 48 197 43 202 Z" fill="#475569" stroke="#1e293b" stroke-width="1.5"/>
+            <path d="M 215 194 Q 210 188 218 186 Q 224 190 220 196 Z" fill="#64748b" stroke="#334155" stroke-width="1.5"/>
+            <path d="M 228 202 Q 224 198 230 196 Q 234 200 230 204 Z" fill="#475569" stroke="#1e293b" stroke-width="1.5"/>
+
+            <!-- Tombstone (Grey Arched Gravestone with RIP) -->
+            <g class="tombstone-stone">
+                <path d="M 125 40 C 85 40 85 80 85 100 L 85 180 L 195 180 L 195 100 C 195 80 195 40 155 40 Z" fill="url(#tombStoneGrad)" stroke="#1e293b" stroke-width="4"/>
+                <path d="M 130 48 C 95 48 93 84 93 102 L 93 175 L 187 175 L 187 102 C 187 84 185 48 150 48 Z" fill="none" stroke="#334155" stroke-width="2" opacity="0.6"/>
+
+                <!-- Stone Chipped Details -->
+                <path d="M 98 65 L 108 72 L 102 78" stroke="#334155" stroke-width="2" fill="none"/>
+                <path d="M 182 130 L 174 138" stroke="#334155" stroke-width="2" fill="none"/>
+
+                <!-- RIP Engraved Text -->
+                <text x="140" y="115" font-family="'Fredoka', 'Outfit', Georgia, serif" font-size="34" font-weight="900" fill="#1e293b" letter-spacing="4" text-anchor="middle" opacity="0.85">R I P</text>
+                <path d="M 115 125 L 165 125" stroke="#1e293b" stroke-width="2" opacity="0.5"/>
+            </g>
+
+            <!-- Dirt Soil Earth Mound Base -->
+            <g class="tombstone-mound">
+                <path d="M 35 195 Q 115 145 205 195 Q 195 208 120 208 Q 45 208 35 195 Z" fill="url(#soilGrad)" stroke="#27272a" stroke-width="3"/>
+                <path d="M 60 185 Q 90 170 120 185" stroke="#451a03" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M 130 182 Q 160 172 180 188" stroke="#451a03" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M 80 196 Q 120 188 150 196" stroke="#451a03" stroke-width="2" fill="none" stroke-linecap="round"/>
+            </g>
+
+            <!-- White Daisy Flower Sprouting Next to Tombstone -->
+            <g class="tombstone-daisy">
+                <path d="M 98 185 Q 94 158 104 135" stroke="#16a34a" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+                <path d="M 100 162 Q 114 155 116 166 Q 106 172 100 162 Z" fill="#22c55e" stroke="#15803d" stroke-width="1.5"/>
+
+                <g transform="translate(104, 135)">
+                    <ellipse cx="0" cy="-14" rx="5" ry="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+                    <ellipse cx="10" cy="-10" rx="5" ry="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" transform="rotate(45, 10, -10)"/>
+                    <ellipse cx="14" cy="0" rx="5" ry="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" transform="rotate(90, 14, 0)"/>
+                    <ellipse cx="10" cy="10" rx="5" ry="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" transform="rotate(135, 10, 10)"/>
+                    <ellipse cx="0" cy="14" rx="5" ry="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+                    <ellipse cx="-10" cy="10" rx="5" ry="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" transform="rotate(225, -10, 10)"/>
+                    <ellipse cx="-14" cy="0" rx="5" ry="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" transform="rotate(270, -14, 0)"/>
+                    <ellipse cx="-10" cy="-10" rx="5" ry="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" transform="rotate(315, -10, -10)"/>
+                    
+                    <circle cx="0" cy="0" r="7.5" fill="#facc15" stroke="#ca8a04" stroke-width="1.5"/>
+                    <circle cx="-2" cy="-2" r="2" fill="#fef08a"/>
+                </g>
+            </g>
+        </svg>
+    </div>`;
+}
+
 function showOldAgeEnding() {
     stopStageTimer();
     const finalData = {
@@ -2059,26 +2129,69 @@ function initEndingPage() {
     const endingBadge = document.getElementById("endingBadge");
     const endingTitle = document.getElementById("endingTitle");
     const endingMsg = document.getElementById("endingMessage");
+    const ageVal = document.getElementById("finalAgeVal");
 
-    const isHealthyOutcome = (stats.health >= 60) && (stats.healthyChoices >= stats.unhealthyChoices);
+    // Calculate final age based on explicit user requirements:
+    // 1. Complete healthy options: Age > 40
+    // 2. Some healthy & some unhealthy options: Age between 30 and 40
+    // 3. Complete unhealthy options: Age < 30
+    let finalAge = 80;
+    let lifestyleCategory = 'healthy'; // 'healthy', 'mixed', 'unhealthy'
+
+    const totalHealthy = stats.healthyChoices || 0;
+    const totalUnhealthy = stats.unhealthyChoices || 0;
+
+    if (totalHealthy > 0 && totalUnhealthy === 0) {
+        // Complete Healthy Option -> Age > 40 (e.g. 78 - 92 years old)
+        finalAge = Math.floor(75 + (stats.health / 100) * 15);
+        if (finalAge <= 40) finalAge = 82;
+        lifestyleCategory = 'healthy';
+    } else if (totalHealthy === 0 && totalUnhealthy > 0) {
+        // Complete Unhealthy Option -> Age < 30 (e.g. 22 - 28 years old)
+        finalAge = Math.floor(22 + (stats.health / 100) * 6);
+        if (finalAge >= 30) finalAge = 26;
+        lifestyleCategory = 'unhealthy';
+    } else if (totalHealthy > 0 && totalUnhealthy > 0) {
+        // Some healthy & some unhealthy -> Age between 30 and 40 (e.g. 35 years old)
+        finalAge = Math.floor(31 + (stats.health / 100) * 7);
+        if (finalAge < 30 || finalAge > 40) finalAge = 35;
+        lifestyleCategory = 'mixed';
+    } else {
+        // Fallback based on health score if choices count missing
+        if (stats.health >= 70) {
+            finalAge = 85;
+            lifestyleCategory = 'healthy';
+        } else if (stats.health >= 40) {
+            finalAge = 35;
+            lifestyleCategory = 'mixed';
+        } else {
+            finalAge = 25;
+            lifestyleCategory = 'unhealthy';
+        }
+    }
 
     if (endingAvatar) {
-        endingAvatar.innerHTML = getCharacterCartoonSVG(7, stats.gender, stats.health, stats.energy);
+        endingAvatar.innerHTML = getTombstoneSVG();
     }
 
     if (endingBadge && endingTitle && endingMsg) {
-        if (isHealthyOutcome) {
+        endingTitle.textContent = "Your Choices Shaped Your Journey";
+        if (lifestyleCategory === 'healthy') {
             endingBadge.textContent = "🌱 HEALTHY LIFESTYLE CHAMPION";
             endingBadge.style.background = "#79a85b";
-            endingTitle.textContent = "You Aged with Vitality!";
-            endingMsg.textContent = "Your healthy choices, nutritious food, and active lifestyle gave you high energy and joy in your senior years!";
+            endingMsg.textContent = "You maintained an exceptionally healthy life! With pure nutritious choices, active lifestyle, and balanced wellness, you lived a long, fulfilling life of " + finalAge + " years.";
+        } else if (lifestyleCategory === 'mixed') {
+            endingBadge.textContent = "⚖️ MODERATE LIFESTYLE";
+            endingBadge.style.background = "#f59e0b";
+            endingMsg.textContent = "Your journey was a mix of healthy choices and occasional junk food / screen time. This moderate path led to a lifespan of " + finalAge + " years.";
         } else {
-            endingBadge.textContent = "⚠️ TIRED JOURNEY";
+            endingBadge.textContent = "⚠️ UNHEALTHY LIFESTYLE WARNING";
             endingBadge.style.background = "#ef7d78";
-            endingTitle.textContent = "Your Choices Shaped Your Journey";
-            endingMsg.textContent = "High junk food, excessive screen time, and lower activity left your body feeling tired with lower energy in senior years.";
+            endingMsg.textContent = "High junk food, excessive screen time, and zero physical activity severely impacted your body, leading to an early departure at age " + finalAge + ".";
         }
     }
+
+    if (ageVal) ageVal.textContent = `${finalAge} Yrs`;
 
     const hVal = document.getElementById("finalHealthVal");
     const eVal = document.getElementById("finalEnergyVal");
