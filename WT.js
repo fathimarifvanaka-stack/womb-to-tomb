@@ -773,6 +773,18 @@ function handleChoiceClick(choice) {
         return;
     }
 
+    // In Stage 0 Newborn Infant: Feeding milk transforms baby to Happy & Fed state (Floating Hearts & Joyful Smile)
+    if (gameState.currentStageIndex === 0) {
+        const avatarGraphic = document.getElementById("avatarGraphic");
+        if (avatarGraphic) {
+            avatarGraphic.innerHTML = getCharacterCartoonSVG(0, gameState.gender, 95, 95, false);
+        }
+        setTimeout(() => {
+            nextStage();
+        }, 1800);
+        return;
+    }
+
     setTimeout(() => {
         nextStage();
     }, 1200);
