@@ -19,7 +19,7 @@ let gameState = {
 };
 
 // SVG Cartoon Character Generator Function for All Life Stages
-function getCharacterCartoonSVG(stageIndex, gender = 'boy', health = 80, energy = 80, isDirtyDiaper = false) {
+function getCharacterCartoonSVG(stageIndex, gender = 'boy', health = 80, energy = 80, isDirtyDiaper = false, chosenExpression = 'normal') {
     const isGirl = gender === 'girl';
     const isLowEnergy = energy < 45 || health < 45;
 
@@ -244,28 +244,177 @@ function getCharacterCartoonSVG(stageIndex, gender = 'boy', health = 80, energy 
                 <path d="M 52 53 Q 60 60 68 53" fill="none" stroke="#e11d48" stroke-width="3" stroke-linecap="round"/>
             </svg>`;
 
-        case 2: // Age 6 Kid
+        case 2: { // Age 6 Kid (High Quality 2D HD Cartoon Kid matching Reference Image 2 & 4)
+            const expr = chosenExpression || 'normal';
+            const skinColor = "#ffe0d1";
+            const skinShadow = "#f7bca0";
+
             return `
-            <svg viewBox="0 0 120 180" class="cartoon-char-svg kid-anim">
-                <!-- Legs -->
-                <rect x="42" y="125" width="12" height="35" rx="6" fill="${pantsColor}" />
-                <rect x="66" y="125" width="12" height="35" rx="6" fill="${pantsColor}" />
-                <ellipse cx="48" cy="160" rx="10" ry="6" fill="#10b981" />
-                <ellipse cx="72" cy="160" rx="10" ry="6" fill="#10b981" />
-                <!-- Torso -->
-                <path d="M 32 70 Q 60 65 88 70 L 86 125 Q 60 128 34 125 Z" fill="${shirtColor}" />
-                <!-- Arms -->
-                <path d="M 32 75 L 18 105" fill="none" stroke="${skinColor}" stroke-width="9" stroke-linecap="round"/>
-                <path d="M 88 75 L 102 105" fill="none" stroke="${skinColor}" stroke-width="9" stroke-linecap="round"/>
-                <!-- Head -->
-                <circle cx="60" cy="42" r="26" fill="${skinColor}" />
-                <!-- Hair -->
-                <path d="M 34 38 C 30 15, 90 15, 86 38 Z" fill="${hairColor}" />
-                <!-- Eyes & Face -->
-                <circle cx="48" cy="40" r="4" fill="#0f172a" />
-                <circle cx="72" cy="40" r="4" fill="#0f172a" />
-                <path d="M 52 50 Q 60 56 68 50" fill="none" stroke="#e11d48" stroke-width="3" stroke-linecap="round"/>
-            </svg>`;
+            <div class="detailed-kid-container stage2-kid">
+                <svg viewBox="0 0 200 230" class="cartoon-char-svg kid-detailed-svg">
+                    <defs>
+                        <radialGradient id="kidCheekBlush" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#ff7b92" stop-opacity="0.8" />
+                            <stop offset="100%" stop-color="#ff7b92" stop-opacity="0" />
+                        </radialGradient>
+                    </defs>
+
+                    <!-- 1. Normal Standing Pose Legs & Orange Sneakers (Matching Ref Image 2) -->
+                    <g class="kid-legs-normal">
+                        <!-- Left Leg in Blue Shorts -->
+                        <rect x="70" y="145" width="22" height="42" rx="4" fill="#2563eb" stroke="#1d4ed8" stroke-width="1.5"/>
+                        <!-- Right Leg in Blue Shorts with Patch -->
+                        <rect x="108" y="145" width="22" height="42" rx="4" fill="#2563eb" stroke="#1d4ed8" stroke-width="1.5"/>
+                        <!-- Shorts Knee Patch (Ref Img 2) -->
+                        <rect x="74" y="162" width="12" height="10" rx="2" fill="#d97706" stroke="#b45309" stroke-width="1"/>
+
+                        <!-- Skin Legs -->
+                        <rect x="74" y="180" width="14" height="22" fill="${skinColor}" stroke="${skinShadow}" stroke-width="1"/>
+                        <rect x="112" y="180" width="14" height="22" fill="${skinColor}" stroke="${skinShadow}" stroke-width="1"/>
+
+                        <!-- White Socks with Stripes -->
+                        <rect x="72" y="196" width="18" height="10" rx="3" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+                        <rect x="110" y="196" width="18" height="10" rx="3" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+                        <line x1="72" y1="200" x2="90" y2="200" stroke="#2563eb" stroke-width="2"/>
+                        <line x1="110" y1="200" x2="128" y2="200" stroke="#2563eb" stroke-width="2"/>
+
+                        <!-- Orange Sneakers (Ref Image 2) -->
+                        <path d="M 64 206 C 64 200 88 198 94 206 L 94 216 L 62 216 Z" fill="#ea580c" stroke="#c2410c" stroke-width="2"/>
+                        <rect x="60" y="212" width="36" height="5" rx="2" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+                        <!-- White Laces -->
+                        <line x1="72" y1="205" x2="84" y2="205" stroke="#ffffff" stroke-width="2"/>
+                        <line x1="74" y1="208" x2="82" y2="208" stroke="#ffffff" stroke-width="2"/>
+
+                        <path d="M 106 206 C 106 200 130 198 136 206 L 138 216 L 106 216 Z" fill="#ea580c" stroke="#c2410c" stroke-width="2"/>
+                        <rect x="104" y="212" width="36" height="5" rx="2" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+                        <line x1="114" y1="205" x2="126" y2="205" stroke="#ffffff" stroke-width="2"/>
+                        <line x1="116" y1="208" x2="124" y2="208" stroke="#ffffff" stroke-width="2"/>
+                    </g>
+
+                    <!-- 2. Torso (Green Hoodie & Striped Shirt Ref Img 2) -->
+                    <g class="kid-torso">
+                        <!-- Blue & White Striped T-Shirt -->
+                        <path d="M 72 85 Q 100 80 128 85 L 126 148 Q 100 152 74 148 Z" fill="#ffffff"/>
+                        <path d="M 74 95 L 126 95 M 74 108 L 126 108 M 74 121 L 126 121 M 74 134 L 126 134" stroke="#0284c7" stroke-width="5"/>
+                        
+                        <!-- Green Zipper Hoodie Over Shirt (Ref Image 2) -->
+                        <!-- Left Hoodie Wing -->
+                        <path d="M 55 85 Q 70 80 78 85 L 75 148 Q 62 148 55 145 Z" fill="#16a34a" stroke="#15803d" stroke-width="2"/>
+                        <!-- Right Hoodie Wing -->
+                        <path d="M 145 85 Q 130 80 122 85 L 125 148 Q 138 148 145 145 Z" fill="#16a34a" stroke="#15803d" stroke-width="2"/>
+                        <!-- Hoodie Drawstrings -->
+                        <path d="M 78 88 L 78 112" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M 122 88 L 122 112" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+                        <!-- Yellow Dino Emblem on T-shirt -->
+                        <path d="M 94 100 Q 98 94 104 98 L 102 106 Z" fill="#facc15"/>
+                    </g>
+
+                    <!-- 3. Arm Movements: Hand 1 in Pocket, Hand 2 in/near Mouth -->
+                    <!-- Right Arm: Hand in Pocket -->
+                    <g class="kid-arm-pocket">
+                        <path d="M 60 88 Q 42 110 58 135" stroke="#16a34a" stroke-width="16" stroke-linecap="round" fill="none"/>
+                        <!-- Hand tucked into pocket -->
+                        <ellipse cx="60" cy="138" rx="8" ry="10" fill="${skinColor}" stroke="${skinShadow}" stroke-width="1.5"/>
+                    </g>
+
+                    <!-- Left Arm: Hand in/near Mouth (with animation) -->
+                    <g class="kid-arm-mouth-anim">
+                        <path d="M 140 88 Q 160 110 125 90" stroke="#16a34a" stroke-width="16" stroke-linecap="round" fill="none"/>
+                        <!-- Hand resting near mouth / chin -->
+                        <circle cx="118" cy="85" r="9" fill="${skinColor}" stroke="${skinShadow}" stroke-width="1.5"/>
+                    </g>
+
+                    <!-- 4. Head & Ears -->
+                    <g class="kid-head">
+                        <circle cx="58" cy="55" r="11" fill="${skinColor}" stroke="${skinShadow}" stroke-width="1.5"/>
+                        <circle cx="142" cy="55" r="11" fill="${skinColor}" stroke="${skinShadow}" stroke-width="1.5"/>
+                        <circle cx="58" cy="55" r="6" fill="#f7c5b0"/>
+                        <circle cx="142" cy="55" r="6" fill="#f7c5b0"/>
+
+                        <!-- Head Shape -->
+                        <circle cx="100" cy="55" r="44" fill="${skinColor}" stroke="${skinShadow}" stroke-width="1.5"/>
+
+                        <!-- Fluffy Messy Hair (Ref Image 2 & 4) -->
+                        ${isGirl ? `
+                            <g class="girl-curly-hair">
+                                <path d="M 52 35 C 38 10, 80 12, 100 18 C 120 12, 162 10, 148 35 C 160 55, 140 70, 144 55 C 130 35, 70 35, 56 55 Z" fill="#854d0e"/>
+                                <circle cx="56" cy="30" r="14" fill="#a16207"/>
+                                <circle cx="144" cy="30" r="14" fill="#a16207"/>
+                                <path d="M 64 35 Q 100 20 136 35 C 120 28, 80 28, 64 35 Z" fill="#ca8a04"/>
+                            </g>
+                        ` : `
+                            <g class="boy-messy-hair">
+                                <path d="M 54 42 C 40 18, 70 12, 92 20 C 108 10, 148 18, 146 44 C 132 28, 114 26, 102 32 Q 78 28 54 42 Z" fill="#5c3d2e"/>
+                                <path d="M 60 30 Q 75 14 90 22 M 105 14 Q 125 18 138 28" stroke="#7c523e" stroke-width="4" stroke-linecap="round" fill="none"/>
+                            </g>
+                        `}
+
+                        <!-- Rosy Cheeks -->
+                        <ellipse cx="70" cy="62" rx="9" ry="6" fill="url(#kidCheekBlush)"/>
+                        <ellipse cx="130" cy="62" rx="9" ry="6" fill="url(#kidCheekBlush)"/>
+
+                        <!-- 5. DYNAMIC FACIAL EXPRESSIONS DIRECTLY ON THE SVG FACE -->
+                        ${expr === 'healthy' ? `
+                            <!-- HEALTHY OPTION CHOSEN: UNLIKE / RELUCTANT / POUTING EXPRESSION -->
+                            <!-- Slanted Grumpy Eyebrows -->
+                            <path d="M 70 42 L 88 48" stroke="#3b2314" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M 112 48 L 130 42" stroke="#3b2314" stroke-width="3.5" stroke-linecap="round"/>
+                            
+                            <!-- Reluctant / Annoyed Squeezed Eyes (> <) -->
+                            <path d="M 72 52 L 84 58 L 72 64" fill="none" stroke="#3b2314" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M 128 52 L 116 58 L 128 64" fill="none" stroke="#3b2314" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+                            <!-- Pouting Wavy Dislike Mouth ("Ugh / I don't want to!") -->
+                            <path d="M 84 76 Q 92 70 100 76 Q 108 82 116 76" fill="none" stroke="#be123c" stroke-width="3.5" stroke-linecap="round"/>
+                            
+                            <!-- Annoyed Sweat Drop on forehead -->
+                            <path d="M 142 38 C 138 44 142 50 146 50 C 150 50 154 44 146 38 Z" fill="#38bdf8"/>
+                        ` : (expr === 'unhealthy' ? `
+                            <!-- UNHEALTHY OPTION CHOSEN: HAPPY / EXCITED / JOYFUL EXPRESSION -->
+                            <!-- High Raised Happy Brows -->
+                            <path d="M 70 38 Q 80 30 90 38" stroke="#3b2314" stroke-width="3" fill="none" stroke-linecap="round"/>
+                            <path d="M 110 38 Q 120 30 130 38" stroke="#3b2314" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+                            <!-- Big Glossy Shiny Sparkle Eyes -->
+                            <g>
+                                <circle cx="81" cy="52" r="10" fill="#0284c7"/>
+                                <circle cx="119" cy="52" r="10" fill="#0284c7"/>
+                                <circle cx="81" cy="52" r="6" fill="#0f172a"/>
+                                <circle cx="119" cy="52" r="6" fill="#0f172a"/>
+                                <circle cx="78" cy="49" r="3.5" fill="#ffffff"/>
+                                <circle cx="116" cy="49" r="3.5" fill="#ffffff"/>
+                                <circle cx="84" cy="55" r="1.5" fill="#ffffff"/>
+                                <circle cx="122" cy="55" r="1.5" fill="#ffffff"/>
+                            </g>
+
+                            <!-- Big Open Laughing Smile with Tongue -->
+                            <path d="M 82 72 Q 100 98 118 72 Z" fill="#e63946" stroke="#be123c" stroke-width="2.5"/>
+                            <path d="M 88 84 Q 100 92 112 84" fill="#ff85a1"/>
+                            <!-- Upper teeth line -->
+                            <path d="M 86 73 L 114 73" stroke="#ffffff" stroke-width="2.5"/>
+                        ` : `
+                            <!-- NORMAL / IDLE EXPRESSION (NO OPTION CHOSEN YET) -->
+                            <!-- Normal Gentle Eyebrows -->
+                            <path d="M 70 42 Q 80 36 90 42" stroke="#3b2314" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                            <path d="M 110 42 Q 120 36 130 42" stroke="#3b2314" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+                            <!-- Normal Cute Blue Eyes -->
+                            <g>
+                                <circle cx="81" cy="52" r="9" fill="#0284c7"/>
+                                <circle cx="119" cy="52" r="9" fill="#0284c7"/>
+                                <circle cx="81" cy="52" r="5" fill="#0f172a"/>
+                                <circle cx="119" cy="52" r="5" fill="#0f172a"/>
+                                <circle cx="78" cy="49" r="3" fill="#ffffff"/>
+                                <circle cx="116" cy="49" r="3" fill="#ffffff"/>
+                            </g>
+
+                            <!-- Sweet Normal Smile -->
+                            <path d="M 84 72 Q 100 86 116 72" fill="none" stroke="#be123c" stroke-width="3" stroke-linecap="round"/>
+                        `)}
+                    </g>
+                </svg>
+            </div>`;
+        }
 
         case 3: // Age 9 Older Kid
             return `
@@ -808,7 +957,10 @@ function loadStage(index) {
     // Render Animated Cartoon SVG for Character Avatar (Side emoji badge hidden - Face SVG shows expressions!)
     const avatarGraphic = document.getElementById("avatarGraphic");
     const isNewbornCrying = index === 0;
-    avatarGraphic.innerHTML = getCharacterCartoonSVG(index, gameState.gender, gameState.health, gameState.energy, isNewbornCrying, false, isNewbornCrying);
+    if (index === 2) {
+        gameState.stage2Expression = 'normal';
+    }
+    avatarGraphic.innerHTML = getCharacterCartoonSVG(index, gameState.gender, gameState.health, gameState.energy, isNewbornCrying, gameState.stage2Expression || 'normal');
 
     const exprBadge = document.getElementById("expressionBadge");
     if (exprBadge) exprBadge.classList.add("hidden");
@@ -817,40 +969,42 @@ function loadStage(index) {
     const sceneBg = document.getElementById("sceneBg");
     sceneBg.className = `scene-bg ${stage.bgClass || ''}`;
 
-    // Props setup
+    // Props setup (Living room matching Reference Image 3)
     const sceneProps = document.getElementById("sceneProps");
     sceneProps.innerHTML = "";
     if (stage.hasLivingRoomProps) {
         sceneProps.innerHTML = `
             <div class="living-room-baseboard"></div>
             <div class="living-room-carpet"></div>
+            <div class="living-room-window">
+                <div class="window-sky">
+                    <span class="window-cloud" style="top:8px; left:12px;">☁️</span>
+                    <span class="window-cloud" style="top:25px; right:15px;">☁️</span>
+                </div>
+                <div class="window-curtain-left"></div>
+                <div class="window-curtain-right"></div>
+                <div class="window-sill">
+                    <span class="window-teddy">🧸</span>
+                </div>
+            </div>
             <div class="prop-sofa">
                 <div class="sofa-back"></div>
                 <div class="sofa-cushions">
                     <div class="sofa-cushion"></div>
                     <div class="sofa-cushion"></div>
                 </div>
+                <div class="sofa-pillow p1"></div>
+                <div class="sofa-pillow p2"></div>
                 <div class="sofa-arm-left"></div>
                 <div class="sofa-arm-right"></div>
-            </div>
-            <div class="prop-table">
-                <div class="table-top">
-                    <span class="table-book">📖</span>
-                    <span class="table-vase">🏺🌸</span>
-                </div>
-                <div class="table-legs">
-                    <div class="table-leg"></div>
-                    <div class="table-leg"></div>
-                </div>
             </div>
             <div class="prop-bookshelf">
                 <div class="shelf-label">📚 BOOKS</div>
                 <div class="shelf-items">📕 📘 📗 📙</div>
             </div>
-            <div class="prop-lamp">
-                <div class="lamp-shade">💡</div>
-                <div class="lamp-pole"></div>
-                <div class="lamp-base"></div>
+            <div class="prop-plant">🪴</div>
+            <div class="prop-tv">
+                <div class="tv-screen">📺</div>
             </div>
         `;
     }
@@ -936,6 +1090,23 @@ function handleChoiceClick(choice) {
             if (avatarGraphic) {
                 avatarGraphic.innerHTML = getCharacterCartoonSVG(0, gameState.gender, 95, 95, false);
             }
+        }
+        setTimeout(() => {
+            nextStage();
+        }, 1800);
+        return;
+    }
+
+    // In Stage 2 Childhood Age 6: Facial expression updates on character face SVG
+    if (gameState.currentStageIndex === 2) {
+        const avatarGraphic = document.getElementById("avatarGraphic");
+        if (choice.isHealthy) {
+            gameState.stage2Expression = 'healthy';
+        } else {
+            gameState.stage2Expression = 'unhealthy';
+        }
+        if (avatarGraphic) {
+            avatarGraphic.innerHTML = getCharacterCartoonSVG(2, gameState.gender, gameState.health, gameState.energy, false, gameState.stage2Expression);
         }
         setTimeout(() => {
             nextStage();

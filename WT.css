@@ -1173,39 +1173,101 @@ body {
 }
 
 .scene-bg.living-room {
-    background: linear-gradient(180deg, #fef9c3 0%, #fef08a 60%, #eab308 60%, #ca8a04 100%);
+    background: linear-gradient(180deg, #fce7f3 0%, #fbcfe8 60%, #a0522d 60%, #7c2d12 100%);
     position: relative;
+    overflow: hidden;
 }
 
 .living-room-baseboard {
     position: absolute;
-    bottom: 60px;
+    bottom: 58px;
     left: 0;
     right: 0;
-    height: 12px;
-    background: #a16207;
-    border-top: 2px solid #713f12;
+    height: 14px;
+    background: #7c2d12;
+    border-top: 3px solid #451a03;
 }
 
 .living-room-carpet {
     position: absolute;
-    bottom: 12px;
+    bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
-    width: 220px;
-    height: 48px;
-    background: linear-gradient(135deg, #fbcfe8, #f472b6);
-    border: 3px dashed #db2777;
+    width: 240px;
+    height: 52px;
+    background: linear-gradient(135deg, #ff85a1, #ff4d88);
+    border: 3.5px dashed #be185d;
     border-radius: 50%;
-    box-shadow: 0 4px 12px rgba(219, 39, 119, 0.25);
+    box-shadow: 0 4px 14px rgba(190, 24, 93, 0.3);
 }
 
-/* Plush Olive Green Sofa */
+/* Large Sunny Window (Ref Image 3) */
+.living-room-window {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    width: 140px;
+    height: 105px;
+    background: linear-gradient(180deg, #38bdf8 0%, #7dd3fc 100%);
+    border: 4px solid #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    overflow: hidden;
+    z-index: 1;
+}
+
+.window-sky {
+    position: absolute;
+    inset: 0;
+}
+
+.window-curtain-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 28px;
+    height: 100%;
+    background: #f472b6;
+    border-right: 2px solid #db2777;
+    border-radius: 0 0 12px 0;
+}
+
+.window-curtain-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 28px;
+    height: 100%;
+    background: #f472b6;
+    border-left: 2px solid #db2777;
+    border-radius: 0 0 0 12px;
+}
+
+.window-sill {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 14px;
+    background: #ffffff;
+    border-top: 2px solid #cbd5e1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.window-teddy {
+    font-size: 1rem;
+    position: relative;
+    top: -4px;
+}
+
+/* Pink Plush Sofa (Ref Image 3) */
 .prop-sofa {
     position: absolute;
-    right: 14px;
-    bottom: 22px;
-    width: 110px;
+    left: 15px;
+    bottom: 25px;
+    width: 120px;
     height: 85px;
     z-index: 2;
 }
@@ -1213,20 +1275,20 @@ body {
 .sofa-back {
     position: absolute;
     top: 0;
-    left: 8px;
-    right: 8px;
-    height: 45px;
-    background: linear-gradient(180deg, #4d7c0f 0%, #3f6212 100%);
-    border: 3px solid #1a2e05;
+    left: 6px;
+    right: 6px;
+    height: 48px;
+    background: linear-gradient(180deg, #ff6584 0%, #ff406c 100%);
+    border: 3px solid #9f1239;
     border-radius: 18px 18px 6px 6px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .sofa-cushions {
     position: absolute;
     bottom: 14px;
-    left: 6px;
-    right: 6px;
+    left: 4px;
+    right: 4px;
     height: 32px;
     display: flex;
     gap: 4px;
@@ -1234,10 +1296,29 @@ body {
 
 .sofa-cushion {
     flex: 1;
-    background: linear-gradient(180deg, #65a30d 0%, #4d7c0f 100%);
-    border: 2.5px solid #1a2e05;
+    background: linear-gradient(180deg, #ff7597 0%, #ff406c 100%);
+    border: 2.5px solid #9f1239;
     border-radius: 10px;
-    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.3);
+}
+
+.sofa-pillow {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    top: 6px;
+}
+
+.sofa-pillow.p1 {
+    left: 10px;
+    background: #06b6d4;
+    border: 2px solid #0e7490;
+}
+
+.sofa-pillow.p2 {
+    right: 10px;
+    background: #f472b6;
+    border: 2px solid #be185d;
 }
 
 .sofa-arm-left {
@@ -1246,8 +1327,8 @@ body {
     left: -4px;
     width: 18px;
     height: 42px;
-    background: #3f6212;
-    border: 2.5px solid #1a2e05;
+    background: #e11d48;
+    border: 2.5px solid #9f1239;
     border-radius: 12px 6px 6px 12px;
 }
 
@@ -1257,87 +1338,77 @@ body {
     right: -4px;
     width: 18px;
     height: 42px;
-    background: #3f6212;
-    border: 2.5px solid #1a2e05;
+    background: #e11d48;
+    border: 2.5px solid #9f1239;
     border-radius: 6px 12px 12px 6px;
 }
 
-/* Polished Oak Coffee Table */
-.prop-table {
-    position: absolute;
-    left: 14px;
-    bottom: 22px;
-    width: 95px;
-    height: 60px;
-    z-index: 2;
-}
-
-.table-top {
-    position: absolute;
-    top: 15px;
-    left: 0;
-    right: 0;
-    height: 22px;
-    background: linear-gradient(180deg, #d97706 0%, #b45309 100%);
-    border: 2.5px solid #78350f;
-    border-radius: 12px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 0 6px;
-}
-
-.table-book {
-    font-size: 14px;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-}
-
-.table-vase {
-    font-size: 13px;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-}
-
-.table-legs {
-    position: absolute;
-    bottom: 0;
-    left: 10px;
-    right: 10px;
-    height: 25px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.table-leg {
-    width: 8px;
-    height: 25px;
-    background: #78350f;
-    border-radius: 2px;
-}
-
-/* Bookshelf on Wall */
+/* Bookshelf on Wall (Ref Image 3) */
 .prop-bookshelf {
     position: absolute;
-    top: 16px;
-    left: 14px;
-    background: rgba(255, 255, 255, 0.9);
-    border: 2px solid #b45309;
-    border-radius: 12px;
-    padding: 4px 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    top: 15px;
+    left: 20px;
+    width: 110px;
+    height: 42px;
+    background: #b45309;
+    border: 2.5px solid #78350f;
+    border-radius: 6px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    z-index: 1;
 }
 
 .shelf-label {
     font-family: var(--font-heading);
     font-size: 9px;
     font-weight: 900;
-    color: #78350f;
+    color: #ffffff;
 }
 
 .shelf-items {
+    font-size: 13px;
+}
+
+/* TV Console (Ref Image 3) */
+.prop-tv {
+    position: absolute;
+    right: 20px;
+    bottom: 22px;
+    width: 75px;
+    height: 65px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.tv-screen {
+    font-size: 2.2rem;
+}
+
+/* Potted Plant (Ref Image 3) */
+.prop-plant {
+    position: absolute;
+    left: 142px;
+    bottom: 25px;
+    z-index: 2;
+    font-size: 1.8rem;
+}
+
+/* Hand-to-Mouth Animation for Stage 2 Kid */
+@keyframes handMouthMove {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+
+.kid-arm-mouth-anim {
+    animation: handMouthMove 2s ease-in-out infinite;
+    transform-origin: 140px 88px;
+}
     font-size: 14px;
 }
 
