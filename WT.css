@@ -132,9 +132,9 @@ body {
 }
 
 .baby-detailed-svg {
-    width: 160px;
-    height: 180px;
-    filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.15));
+    width: 220px;
+    height: 230px;
+    filter: drop-shadow(0 14px 25px rgba(0, 0, 0, 0.2));
 }
 
 .crying-state {

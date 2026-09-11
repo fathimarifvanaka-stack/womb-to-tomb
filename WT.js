@@ -30,10 +30,13 @@ function getCharacterCartoonSVG(stageIndex, gender = 'boy', health = 80, energy 
     const pantsColor = isGirl ? "#f472b6" : "#1d4ed8";
 
     switch (stageIndex) {
-        case 0: { // Age 0 Infant (Detailed Cartoon Baby with Realistic Face Expressions & Movements)
+        case 0: { // Age 0 Infant (High Quality HD 2D Cartoon Baby matching reference images with high chair & accessories)
             const isDirty = isDirtyDiaper || health < 50;
             const isHappy = !isDirty && health >= 70;
             const isCrying = isDirty || health < 40;
+
+            const skinColor = "#ffe4d6";
+            const skinShadow = "#f7c5b0";
 
             return `
             <div class="detailed-baby-container ${isCrying ? 'crying-state' : (isHappy ? 'happy-state' : 'neutral-state')}">
@@ -52,70 +55,168 @@ function getCharacterCartoonSVG(stageIndex, gender = 'boy', health = 80, energy 
                     </div>
                 ` : ''}
 
-                <svg viewBox="0 0 160 180" class="cartoon-char-svg baby-detailed-svg">
-                    <ellipse cx="80" cy="165" rx="45" ry="12" fill="#000000" opacity="0.1" />
+                <svg viewBox="0 0 200 210" class="cartoon-char-svg baby-detailed-svg">
+                    <defs>
+                        <!-- High Chair Pattern & Gradients -->
+                        <radialGradient id="sunflowerBg" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#9a4d00" />
+                            <stop offset="100%" stop-color="#542600" />
+                        </radialGradient>
+                        <radialGradient id="cheekBlush" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#ff7b92" stop-opacity="0.8" />
+                            <stop offset="100%" stop-color="#ff7b92" stop-opacity="0" />
+                        </radialGradient>
+                    </defs>
 
-                    <!-- Kicking Baby Legs -->
+                    <!-- 1. High Chair Backrest (Golden Wood Arch Frame with Sunflowers) -->
+                    <path d="M 45 35 Q 100 10 155 35 Q 165 100 155 160 L 45 160 Q 35 100 45 35 Z" fill="#d97706" stroke="#b45309" stroke-width="4"/>
+                    <path d="M 50 40 Q 100 18 150 40 Q 158 100 150 155 L 50 155 Q 42 100 50 40 Z" fill="url(#sunflowerBg)"/>
+                    <!-- Sunflower Pattern Petals -->
+                    <g opacity="0.35">
+                        <circle cx="70" cy="50" r="10" fill="#fbbf24"/><circle cx="130" cy="50" r="10" fill="#fbbf24"/>
+                        <circle cx="60" cy="90" r="12" fill="#fbbf24"/><circle cx="140" cy="90" r="12" fill="#fbbf24"/>
+                        <circle cx="80" cy="130" r="10" fill="#fbbf24"/><circle cx="120" cy="130" r="10" fill="#fbbf24"/>
+                    </g>
+
+                    <!-- 2. Kicking Baby Legs (Lower Body) -->
                     <g class="baby-leg-left">
-                        <ellipse cx="52" cy="142" rx="14" ry="18" fill="#fbcfe8" />
-                        <circle cx="46" cy="154" r="8" fill="#fbcfe8" />
+                        <ellipse cx="68" cy="162" rx="14" ry="18" fill="${skinColor}" stroke="${skinShadow}" stroke-width="1.5"/>
+                        <circle cx="62" cy="174" r="8" fill="${skinColor}"/>
                     </g>
                     <g class="baby-leg-right">
-                        <ellipse cx="108" cy="142" rx="14" ry="18" fill="#fbcfe8" />
-                        <circle cx="114" cy="154" r="8" fill="#fbcfe8" />
+                        <ellipse cx="132" cy="162" rx="14" ry="18" fill="${skinColor}" stroke="${skinShadow}" stroke-width="1.5"/>
+                        <circle cx="138" cy="174" r="8" fill="${skinColor}"/>
                     </g>
 
-                    <!-- Breathing Baby Torso -->
+                    <!-- 3. Breathing Baby Torso & Bib/Onesie -->
                     <g class="baby-torso">
-                        <ellipse cx="80" cy="115" rx="36" ry="32" fill="${isGirl ? '#f472b6' : '#38bdf8'}" />
-                        <path d="M 65 88 Q 80 98 95 88" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
-                        <circle cx="80" cy="105" r="3" fill="#ffffff"/>
-                        <circle cx="80" cy="120" r="3" fill="#ffffff"/>
-                        <!-- Diaper: Dirty brown stain if dirty, Crisp Pampers White if clean -->
-                        <path d="M 48 128 Q 80 148 112 128 Q 100 152 60 152 Z" fill="${isDirty ? '#854d0e' : '#ffffff'}" stroke="#cbd5e1" stroke-width="2"/>
+                        <ellipse cx="100" cy="130" rx="38" ry="32" fill="${isGirl ? '#3b82f6' : '#2563eb'}"/>
+                        <!-- Checkered Onesie Pattern -->
+                        <path d="M 75 110 L 125 110 M 72 125 L 128 125 M 78 140 L 122 140" stroke="#60a5fa" stroke-width="2" opacity="0.6"/>
+                        
+                        <!-- Checkered Bib (Boy: Blue Checkered / Girl: Yellow Checkered with Red Trim) -->
+                        ${isGirl ? `
+                            <path d="M 72 100 Q 100 128 128 100 C 122 124 78 124 72 100 Z" fill="#ffd166" stroke="#ef476f" stroke-width="3"/>
+                            <path d="M 82 104 L 118 104 M 86 112 L 114 112" stroke="#f77f00" stroke-width="1.5"/>
+                        ` : `
+                            <path d="M 72 100 Q 100 128 128 100 C 122 124 78 124 72 100 Z" fill="#60a5fa" stroke="#ffffff" stroke-width="3"/>
+                            <path d="M 82 104 L 118 104 M 86 112 L 114 112" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="3,3"/>
+                        `}
+
+                        <!-- Diaper: Dirty brown stain if dirty, Crisp White Onesie/Diaper if clean -->
+                        <path d="M 70 142 Q 100 162 130 142 Q 118 165 82 165 Z" fill="${isDirty ? '#854d0e' : '#ffffff'}" stroke="#cbd5e1" stroke-width="2"/>
                     </g>
 
-                    <!-- Reaching Baby Arms -->
+                    <!-- 4. Reaching Baby Arms -->
                     <g class="baby-arm-left">
-                        <path d="M 48 98 Q 28 85 32 68" fill="none" stroke="#fbcfe8" stroke-width="12" stroke-linecap="round"/>
-                        <circle cx="32" cy="65" r="7" fill="#fbcfe8"/>
+                        <path d="M 68 112 Q 42 98 46 80" fill="none" stroke="${skinColor}" stroke-width="14" stroke-linecap="round"/>
+                        <circle cx="46" cy="76" r="8" fill="${skinColor}"/>
                     </g>
                     <g class="baby-arm-right">
-                        <path d="M 112 98 Q 132 85 128 68" fill="none" stroke="#fbcfe8" stroke-width="12" stroke-linecap="round"/>
-                        <circle cx="128" cy="65" r="7" fill="#fbcfe8"/>
+                        <path d="M 132 112 Q 158 98 154 80" fill="none" stroke="${skinColor}" stroke-width="14" stroke-linecap="round"/>
+                        <circle cx="154" cy="76" r="8" fill="${skinColor}"/>
                     </g>
 
-                    <!-- Tilting Baby Head with Detailed Face Expressions -->
+                    <!-- 5. Tilting Head & Rich Character Face (Matching Reference Images 2 & 3) -->
                     <g class="baby-head">
-                        <circle cx="80" cy="58" r="40" fill="#fbcfe8" />
-                        ${isGirl ?
-                    '<path d="M 68 20 Q 80 8 92 20 Q 92 30 80 24 Q 68 30 68 20 Z" fill="#ec4899" />' :
-                    '<path d="M 75 22 Q 80 8 85 22 M 72 26 Q 80 14 88 26" fill="none" stroke="#1e293b" stroke-width="4" stroke-linecap="round"/>'
-                }
+                        <!-- Ears -->
+                        <circle cx="56" cy="72" r="11" fill="${skinColor}" stroke="${skinShadow}" stroke-width="1.5"/>
+                        <circle cx="144" cy="72" r="11" fill="${skinColor}" stroke="${skinShadow}" stroke-width="1.5"/>
+                        <circle cx="56" cy="72" r="6" fill="#f7c5b0"/>
+                        <circle cx="144" cy="72" r="6" fill="#f7c5b0"/>
 
-                        ${isCrying ? `
-                            <path d="M 58 50 L 68 56 L 58 62" fill="none" stroke="#0f172a" stroke-width="4" stroke-linecap="round"/>
-                            <path d="M 102 50 L 92 56 L 102 62" fill="none" stroke="#0f172a" stroke-width="4" stroke-linecap="round"/>
+                        <!-- Head Base -->
+                        <circle cx="100" cy="70" r="45" fill="${skinColor}" stroke="${skinShadow}" stroke-width="1.5"/>
+
+                        <!-- Hair Artwork (Boy: Fluffy Brown Hair Ref Image 2 / Girl: Blonde Pigtails & Pink Bows Ref Image 3) -->
+                        ${isGirl ? `
+                            <!-- Girl Pigtails & Bows -->
+                            <g>
+                                <circle cx="52" cy="30" r="14" fill="#e6b800"/>
+                                <circle cx="148" cy="30" r="14" fill="#e6b800"/>
+                                <!-- Pink Bows -->
+                                <path d="M 44 26 C 36 20 36 34 48 30 C 36 34 50 42 52 32 Z" fill="#ff4d88"/>
+                                <path d="M 156 26 C 164 20 164 34 152 30 C 164 34 150 42 148 32 Z" fill="#ff4d88"/>
+                                <circle cx="48" cy="28" r="4" fill="#ff75a0"/>
+                                <circle cx="152" cy="28" r="4" fill="#ff75a0"/>
+                                <!-- Blonde Bangs -->
+                                <path d="M 60 48 Q 100 25 140 48 Q 125 35 100 38 Q 75 35 60 48 Z" fill="#e6b800"/>
+                            </g>
                         ` : `
-                            <circle cx="63" cy="54" r="6.5" fill="#0f172a" />
-                            <circle cx="97" cy="54" r="6.5" fill="#0f172a" />
-                            <circle cx="65" cy="51" r="2.5" fill="#ffffff" />
-                            <circle cx="99" cy="51" r="2.5" fill="#ffffff" />
+                            <!-- Boy Fluffy Brown Layered Hair (Ref Image 2) -->
+                            <g>
+                                <path d="M 58 50 C 45 20, 75 18, 92 25 C 105 15, 140 22, 142 50 C 130 35, 110 32, 100 38 Q 75 35 58 50 Z" fill="#5c3d2e"/>
+                                <!-- Soft Hair Highlights -->
+                                <path d="M 85 24 Q 100 18 115 25" stroke="#7c523e" stroke-width="4" stroke-linecap="round" fill="none"/>
+                            </g>
+                        `}
+
+                        <!-- Eyelashes & Brows -->
+                        <path d="M 72 52 Q 82 46 90 52" stroke="#5c3d2e" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                        <path d="M 110 52 Q 118 46 128 52" stroke="#5c3d2e" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+                        <!-- Eyes Expression (Crying vs Big Glossy Brown Eyes matching Reference Images) -->
+                        ${isCrying ? `
+                            <!-- Squeezed Crying Eyes (> <) -->
+                            <path d="M 74 60 L 84 66 L 74 72" fill="none" stroke="#261408" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M 126 60 L 116 66 L 126 72" fill="none" stroke="#261408" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        ` : `
+                            <!-- Big Glossy Brown Eyes (Ref Images 2 & 3) -->
+                            <g>
+                                <circle cx="81" cy="65" r="10" fill="#4a2e1b"/>
+                                <circle cx="119" cy="65" r="10" fill="#4a2e1b"/>
+                                <circle cx="81" cy="65" r="6" fill="#261408"/>
+                                <circle cx="119" cy="65" r="6" fill="#261408"/>
+                                <!-- Double Sparkle Highlights -->
+                                <circle cx="78" cy="62" r="3.5" fill="#ffffff"/>
+                                <circle cx="116" cy="62" r="3.5" fill="#ffffff"/>
+                                <circle cx="84" cy="68" r="1.5" fill="#ffffff"/>
+                                <circle cx="122" cy="68" r="1.5" fill="#ffffff"/>
+                                <!-- Top Eyelash Accent -->
+                                <path d="M 70 60 Q 81 54 92 60" stroke="#261408" stroke-width="2" stroke-linecap="round" fill="none"/>
+                                <path d="M 108 60 Q 119 54 130 60" stroke="#261408" stroke-width="2" stroke-linecap="round" fill="none"/>
+                            </g>
                         `}
 
                         <!-- Rosy Blushing Cheeks -->
-                        <ellipse cx="54" cy="64" rx="8" ry="5.5" fill="#f43f5e" opacity="0.6"/>
-                        <ellipse cx="106" cy="64" rx="8" ry="5.5" fill="#f43f5e" opacity="0.6"/>
+                        <ellipse cx="68" cy="74" rx="9" ry="6" fill="url(#cheekBlush)"/>
+                        <ellipse cx="132" cy="74" rx="9" ry="6" fill="url(#cheekBlush)"/>
 
+                        <!-- Mouth Expression -->
                         ${isCrying ? `
-                            <path d="M 68 68 Q 80 92 92 68 Z" fill="#991b1b" stroke="#e11d48" stroke-width="2.5"/>
+                            <path d="M 85 82 Q 100 106 115 82 Z" fill="#800f2f" stroke="#c9184a" stroke-width="2.5"/>
                         ` : (isHappy ? `
-                            <!-- Bright Joyful Smiling Face 😊 -->
-                            <path d="M 66 66 Q 80 84 94 66" fill="#f43f5e" stroke="#e11d48" stroke-width="3.5" stroke-linecap="round"/>
-                            <path d="M 70 70 Q 80 78 90 70" fill="#ffffff"/>
+                            <!-- Cheerful Giggling Open Smile -->
+                            <path d="M 82 80 Q 100 102 118 80 Z" fill="#e63946" stroke="#c9184a" stroke-width="2.5"/>
+                            <path d="M 88 92 Q 100 100 112 92" fill="#ff85a1"/>
                         ` : `
-                            <path d="M 70 68 Q 80 80 90 68" fill="#f43f5e" stroke="#e11d48" stroke-width="3" stroke-linecap="round"/>
+                            <path d="M 86 82 Q 100 94 114 82" fill="none" stroke="#c9184a" stroke-width="3" stroke-linecap="round"/>
                         `)}
+                    </g>
+
+                    <!-- 6. Front White Feeding Tray & Accessories (Ref Images 2 & 3) -->
+                    <g>
+                        <!-- White Tray Frame Base sitting in front -->
+                        <path d="M 30 160 Q 100 148 170 160 L 180 185 Q 100 200 20 185 Z" fill="#f8fafc" stroke="#cbd5e1" stroke-width="3"/>
+                        <path d="M 35 163 Q 100 152 165 163 L 174 182 Q 100 195 26 182 Z" fill="#ffffff"/>
+
+                        <!-- Pink Fresh Baby Food / Wipes Box -->
+                        <rect x="36" y="166" width="28" height="15" rx="5" fill="#ff85a1" stroke="#ff4d88" stroke-width="1.5"/>
+                        <rect x="42" y="164" width="16" height="4" rx="2" fill="#ffffff"/>
+
+                        <!-- Red & Yellow Rattle Toy -->
+                        <circle cx="82" cy="173" r="6" fill="#ffd166" stroke="#ef476f" stroke-width="1.5"/>
+                        <line x1="86" y1="177" x2="94" y2="183" stroke="#ef476f" stroke-width="3" stroke-linecap="round"/>
+
+                        <!-- Yellow Rubber Ducky -->
+                        <path d="M 116 177 C 112 173 116 166 122 168 C 126 168 128 171 127 174 C 130 174 133 177 126 179 Z" fill="#ffd166"/>
+                        <circle cx="123" cy="170" r="1" fill="#000000"/>
+                        <path d="M 125 171 L 129 172 L 125 173 Z" fill="#f77f00"/>
+
+                        <!-- Baby Milk Bottle (Clear Blue Bottle, Pink Cap, Yellow Nipple) -->
+                        <rect x="148" y="164" width="16" height="22" rx="4" fill="#e0f2fe" stroke="#38bdf8" stroke-width="1.5"/>
+                        <rect x="146" y="160" width="20" height="5" rx="2" fill="#ff4d88"/>
+                        <path d="M 152 160 C 152 153 160 153 160 160 Z" fill="#ffb703"/>
                     </g>
                 </svg>
             </div>`;
