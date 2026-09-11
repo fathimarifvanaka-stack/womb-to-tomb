@@ -1172,6 +1172,112 @@ body {
     background: radial-gradient(circle at center, #ffffff 0%, #e0f2fe 70%, #bae6fd 100%);
 }
 
+/* Stage 1 Toddler Playroom (Ref Images 2 & 3) */
+.scene-bg.toddler-playroom {
+    background: linear-gradient(180deg, #fef3c7 0%, #fde68a 60%, #eab308 60%, #ca8a04 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.toddler-room-baseboard {
+    position: absolute;
+    bottom: 58px;
+    left: 0;
+    right: 0;
+    height: 14px;
+    background: #ca8a04;
+    border-top: 3px solid #854d0e;
+}
+
+.toddler-puzzle-mat {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px;
+    height: 55px;
+    background: repeating-linear-gradient(45deg, #60a5fa, #60a5fa 25px, #f472b6 25px, #f472b6 50px, #facc15 50px, #facc15 75px, #4ade80 75px, #4ade80 100px);
+    border: 3.5px solid #2563eb;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+}
+
+.prop-toy-shelf {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 100px;
+    height: 75px;
+    background: #ffffff;
+    border: 3px solid #cbd5e1;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: space-around;
+    padding: 4px;
+    z-index: 1;
+}
+
+.prop-mini-jcb {
+    position: absolute;
+    bottom: 22px;
+    left: 20px;
+    font-size: 2rem;
+    z-index: 2;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+}
+
+.prop-toy-car {
+    position: absolute;
+    bottom: 24px;
+    right: 25px;
+    font-size: 1.8rem;
+    z-index: 2;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+}
+
+.prop-floor-teddy {
+    position: absolute;
+    bottom: 26px;
+    left: 135px;
+    font-size: 1.8rem;
+    z-index: 2;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+}
+
+.prop-playhouse {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    font-size: 3rem;
+    z-index: 1;
+}
+
+/* Waving Bye-Bye Animation for Toddler Left Arm */
+@keyframes byeByeWave {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(14deg); }
+    75% { transform: rotate(-14deg); }
+}
+
+.left-arm-wave-anim {
+    animation: byeByeWave 1.2s ease-in-out infinite;
+    transform-origin: 132px 90px;
+}
+
+/* Moving Toy Front and Back Animation for Toddler Right Arm */
+@keyframes moveToyBackForth {
+    0%, 100% { transform: translateX(0px) translateY(0px); }
+    50% { transform: translateX(-10px) translateY(5px); }
+}
+
+.right-arm-toy-anim {
+    animation: moveToyBackForth 1.5s ease-in-out infinite;
+    transform-origin: 68px 90px;
+}
+
 .scene-bg.living-room {
     background: linear-gradient(180deg, #fce7f3 0%, #fbcfe8 60%, #a0522d 60%, #7c2d12 100%);
     position: relative;

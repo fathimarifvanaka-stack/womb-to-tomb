@@ -222,27 +222,170 @@ function getCharacterCartoonSVG(stageIndex, gender = 'boy', health = 80, energy 
             </div>`;
         }
 
-        case 1: // Age 3 Toddler
+        case 1: { // Age 3 Toddler (HD 2D Cartoon Sitting Toddler matching Reference Images 2 & 3)
+            const expr = chosenExpression || 'normal';
+            const skinColor = "#ffe0d1";
+            const skinShadow = "#f7bca0";
+
             return `
-            <svg viewBox="0 0 120 160" class="cartoon-char-svg toddler-anim">
-                <!-- Legs & Shoes -->
-                <rect x="42" y="115" width="12" height="25" rx="6" fill="${pantsColor}" />
-                <rect x="66" y="115" width="12" height="25" rx="6" fill="${pantsColor}" />
-                <ellipse cx="48" cy="140" rx="10" ry="6" fill="#ef4444" />
-                <ellipse cx="72" cy="140" rx="10" ry="6" fill="#ef4444" />
-                <!-- Shirt / Dress -->
-                <path d="M 35 75 Q 60 70 85 75 L 88 115 Q 60 120 32 115 Z" fill="${shirtColor}" />
-                <!-- Head -->
-                <circle cx="60" cy="45" r="28" fill="${skinColor}" />
-                <!-- Hair -->
-                <path d="M 34 40 Q 60 15 86 40 Q 86 25 60 22 Q 34 25 34 40 Z" fill="${hairColor}" />
-                ${isGirl ? '<circle cx="34" cy="30" r="7" fill="#f43f5e"/><circle cx="86" cy="30" r="7" fill="#f43f5e"/>' : ''}
-                <!-- Eyes -->
-                <circle cx="48" cy="42" r="4.5" fill="#0f172a" />
-                <circle cx="72" cy="42" r="4.5" fill="#0f172a" />
-                <!-- Mouth -->
-                <path d="M 52 53 Q 60 60 68 53" fill="none" stroke="#e11d48" stroke-width="3" stroke-linecap="round"/>
-            </svg>`;
+            <div class="detailed-toddler-container stage1-toddler">
+                <svg viewBox="0 0 200 220" class="cartoon-char-svg toddler-detailed-svg">
+                    <defs>
+                        <radialGradient id="toddlerCheekBlush" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#ff7b92" stop-opacity="0.8" />
+                            <stop offset="100%" stop-color="#ff7b92" stop-opacity="0" />
+                        </radialGradient>
+                    </defs>
+
+                    <!-- 1. Sitting Pose Legs on Floor (Ref Images 2 & 3) -->
+                    <g class="toddler-legs-sitting">
+                        <!-- Left Folded Leg -->
+                        <path d="M 45 155 Q 30 178 60 190 Q 90 198 100 185 L 85 150 Z" fill="#2563eb" stroke="#1d4ed8" stroke-width="2"/>
+                        <!-- Right Folded Leg -->
+                        <path d="M 155 155 Q 170 178 140 190 Q 110 198 100 185 L 115 150 Z" fill="#2563eb" stroke="#1d4ed8" stroke-width="2"/>
+                        
+                        <!-- Rainbow Striped Socks & Blue Sneakers resting on floor -->
+                        <ellipse cx="50" cy="186" rx="14" ry="10" fill="#3b82f6" stroke="#1d4ed8" stroke-width="1.5"/>
+                        <ellipse cx="150" cy="186" rx="14" ry="10" fill="#3b82f6" stroke="#1d4ed8" stroke-width="1.5"/>
+                        <!-- White Sneaker Soles & Laces -->
+                        <path d="M 38 190 Q 50 196 62 190" stroke="#ffffff" stroke-width="3" fill="none"/>
+                        <path d="M 138 190 Q 150 196 162 190" stroke="#ffffff" stroke-width="3" fill="none"/>
+                    </g>
+
+                    <!-- 2. Torso (Rainbow Striped Shirt & Blue Overalls Ref Images 2 & 3) -->
+                    <g class="toddler-torso">
+                        <!-- Rainbow Striped Shirt (Red, Orange, Yellow, Green, Blue) -->
+                        <path d="M 68 85 Q 100 80 132 85 L 128 152 Q 100 156 72 152 Z" fill="#ffffff"/>
+                        <path d="M 70 92 L 130 92" stroke="#ef4444" stroke-width="5"/>
+                        <path d="M 70 102 L 130 102" stroke="#f97316" stroke-width="5"/>
+                        <path d="M 71 112 L 129 112" stroke="#facc15" stroke-width="5"/>
+                        <path d="M 71 122 L 129 122" stroke="#22c55e" stroke-width="5"/>
+                        <path d="M 72 132 L 128 132" stroke="#3b82f6" stroke-width="5"/>
+
+                        <!-- Blue Denim Overalls Bib & Straps -->
+                        <path d="M 75 105 L 125 105 L 122 152 Q 100 155 78 152 Z" fill="#2563eb" stroke="#1d4ed8" stroke-width="2"/>
+                        <!-- Overalls Straps with Golden Metallic Buttons -->
+                        <line x1="82" y1="85" x2="84" y2="108" stroke="#1d4ed8" stroke-width="5"/>
+                        <line x1="118" y1="85" x2="116" y2="108" stroke="#1d4ed8" stroke-width="5"/>
+                        <circle cx="84" cy="108" r="3.5" fill="#f59e0b"/>
+                        <circle cx="116" cy="108" r="3.5" fill="#f59e0b"/>
+                        <!-- Chest Pocket -->
+                        <path d="M 90 114 Q 100 112 110 114 L 108 128 Q 100 132 92 128 Z" fill="#1d4ed8" stroke="#3b82f6" stroke-width="1.5"/>
+                    </g>
+
+                    <!-- 3. Arm Movements: Right Hand holding toy moving front/back, Left Hand raised saying bye-bye -->
+                    <!-- Right Arm: Holding Mini Toy Car (moving front & back animation) -->
+                    <g class="right-arm-toy-anim">
+                        <path d="M 68 90 Q 42 108 55 125" stroke="${skinColor}" stroke-width="14" stroke-linecap="round" fill="none"/>
+                        <!-- Right Hand -->
+                        <circle cx="55" cy="126" r="8" fill="${skinColor}" stroke="${skinShadow}" stroke-width="1.5"/>
+                        <!-- Mini Red Toy Car held in hand -->
+                        <rect x="36" y="122" width="22" height="12" rx="3" fill="#ef4444" stroke="#b91c1c" stroke-width="1.5"/>
+                        <circle cx="42" cy="134" r="3.5" fill="#0f172a"/>
+                        <circle cx="52" cy="134" r="3.5" fill="#0f172a"/>
+                        <rect x="42" y="124" width="10" height="5" rx="1" fill="#bae6fd"/>
+                    </g>
+
+                    <!-- Left Arm: Raised Up Waving Bye-Bye (saying bye-bye animation) -->
+                    <g class="left-arm-wave-anim">
+                        <path d="M 132 90 Q 155 85 152 65" stroke="${skinColor}" stroke-width="14" stroke-linecap="round" fill="none"/>
+                        <!-- Left Open Toddler Hand Raised Up -->
+                        <circle cx="152" cy="60" r="9" fill="${skinColor}" stroke="${skinShadow}" stroke-width="1.5"/>
+                        <!-- Fingers -->
+                        <circle cx="147" cy="53" r="3" fill="${skinColor}"/>
+                        <circle cx="152" cy="51" r="3" fill="${skinColor}"/>
+                        <circle cx="157" cy="53" r="3" fill="${skinColor}"/>
+                        <circle cx="160" cy="57" r="3" fill="${skinColor}"/>
+                    </g>
+
+                    <!-- 4. Head & Curly Hair (Ref Images 2 & 3) -->
+                    <g class="toddler-head">
+                        <circle cx="56" cy="54" r="10" fill="${skinColor}" stroke="${skinShadow}" stroke-width="1.5"/>
+                        <circle cx="144" cy="54" r="10" fill="${skinColor}" stroke="${skinShadow}" stroke-width="1.5"/>
+                        <circle cx="56" cy="54" r="5" fill="#f7c5b0"/>
+                        <circle cx="144" cy="54" r="5" fill="#f7c5b0"/>
+
+                        <!-- Chubby Head Shape -->
+                        <circle cx="100" cy="54" r="44" fill="${skinColor}" stroke="${skinShadow}" stroke-width="1.5"/>
+
+                        <!-- Fluffy Curly Brown Hair Strands (Ref Images 2 & 3) -->
+                        <g class="curly-brown-hair">
+                            <path d="M 52 38 C 38 12, 75 10, 95 16 C 115 10, 160 12, 148 38 C 160 58, 142 72, 145 56 C 132 36, 68 36, 55 56 Z" fill="#854d0e"/>
+                            <circle cx="55" cy="28" r="12" fill="#a16207"/>
+                            <circle cx="75" cy="22" r="13" fill="#a16207"/>
+                            <circle cx="100" cy="20" r="14" fill="#a16207"/>
+                            <circle cx="125" cy="22" r="13" fill="#a16207"/>
+                            <circle cx="145" cy="28" r="12" fill="#a16207"/>
+                            <!-- Curly Bangs -->
+                            <path d="M 62 36 Q 100 22 138 36 C 122 28, 78 28, 62 36 Z" fill="#ca8a04"/>
+                        </g>
+
+                        <!-- Rosy Blushing Cheeks -->
+                        <ellipse cx="68" cy="62" rx="9" ry="6" fill="url(#toddlerCheekBlush)"/>
+                        <ellipse cx="132" cy="62" rx="9" ry="6" fill="url(#toddlerCheekBlush)"/>
+
+                        <!-- 5. DYNAMIC FACIAL EXPRESSIONS DIRECTLY ON THE SVG FACE -->
+                        ${expr === 'healthy' ? `
+                            <!-- HEALTHY OPTION CHOSEN: UNLIKE / RELUCTANT / POUTING EXPRESSION -->
+                            <!-- Slanted Grumpy Eyebrows -->
+                            <path d="M 70 40 L 88 46" stroke="#3b2314" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M 112 46 L 130 40" stroke="#3b2314" stroke-width="3.5" stroke-linecap="round"/>
+                            
+                            <!-- Reluctant / Annoyed Squeezed Eyes (> <) -->
+                            <path d="M 72 50 L 84 56 L 72 62" fill="none" stroke="#3b2314" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M 128 50 L 116 56 L 128 62" fill="none" stroke="#3b2314" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+                            <!-- Pouting Wavy Dislike Mouth ("I don't want fruits/healthy food!") -->
+                            <path d="M 84 74 Q 92 68 100 74 Q 108 80 116 74" fill="none" stroke="#be123c" stroke-width="3.5" stroke-linecap="round"/>
+                            
+                            <!-- Annoyed Sweat Drop on forehead -->
+                            <path d="M 142 36 C 138 42 142 48 146 48 C 150 48 154 42 146 36 Z" fill="#38bdf8"/>
+                        ` : (expr === 'unhealthy' ? `
+                            <!-- UNHEALTHY OPTION CHOSEN: CHEERING UP / SUPER HAPPY / LIKE EXPRESSION -->
+                            <!-- High Raised Cheering Eyebrows -->
+                            <path d="M 70 36 Q 80 26 90 36" stroke="#3b2314" stroke-width="3" fill="none" stroke-linecap="round"/>
+                            <path d="M 110 36 Q 120 26 130 36" stroke="#3b2314" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+                            <!-- Big Glossy Shiny Sparkle Eyes -->
+                            <g>
+                                <circle cx="81" cy="50" r="10" fill="#0284c7"/>
+                                <circle cx="119" cy="50" r="10" fill="#0284c7"/>
+                                <circle cx="81" cy="50" r="6" fill="#0f172a"/>
+                                <circle cx="119" cy="50" r="6" fill="#0f172a"/>
+                                <circle cx="78" cy="47" r="3.5" fill="#ffffff"/>
+                                <circle cx="116" cy="47" r="3.5" fill="#ffffff"/>
+                                <circle cx="84" cy="53" r="1.5" fill="#ffffff"/>
+                                <circle cx="122" cy="53" r="1.5" fill="#ffffff"/>
+                            </g>
+
+                            <!-- Big Open Laughing Cheering Smile with Tongue & Teeth -->
+                            <path d="M 80 68 Q 100 96 120 68 Z" fill="#e63946" stroke="#be123c" stroke-width="2.5"/>
+                            <path d="M 86 80 Q 100 88 114 80" fill="#ff85a1"/>
+                            <!-- Upper teeth line -->
+                            <path d="M 84 69 L 116 69" stroke="#ffffff" stroke-width="2.5"/>
+                        ` : `
+                            <!-- NORMAL / IDLE EXPRESSION (NO OPTION CHOSEN YET) -->
+                            <!-- Normal Gentle Eyebrows -->
+                            <path d="M 70 40 Q 80 34 90 40" stroke="#3b2314" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                            <path d="M 110 40 Q 120 34 130 40" stroke="#3b2314" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+                            <!-- Normal Cute Blue Eyes -->
+                            <g>
+                                <circle cx="81" cy="50" r="9" fill="#0284c7"/>
+                                <circle cx="119" cy="50" r="9" fill="#0284c7"/>
+                                <circle cx="81" cy="50" r="5" fill="#0f172a"/>
+                                <circle cx="119" cy="50" r="5" fill="#0f172a"/>
+                                <circle cx="78" cy="47" r="3" fill="#ffffff"/>
+                                <circle cx="116" cy="47" r="3" fill="#ffffff"/>
+                            </g>
+
+                            <!-- Sweet Normal Smile -->
+                            <path d="M 84 70 Q 100 84 116 70" fill="none" stroke="#be123c" stroke-width="3" stroke-linecap="round"/>
+                        `)}
+                    </g>
+                </svg>
+            </div>`;
+        }
 
         case 2: { // Age 6 Kid (High Quality 2D HD Cartoon Kid matching Reference Image 2 & 4)
             const expr = chosenExpression || 'normal';
@@ -545,8 +688,9 @@ const lifeStages = [
     {
         stageName: "TODDLER (Age 3)",
         title: "Discovering Tastes",
-        description: "You are a growing child! What food would you like to eat today?",
-        bgClass: "kitchen-room",
+        description: "You are a growing toddler playing in your toy room! What food would you like to eat today?",
+        bgClass: "toddler-playroom",
+        hasToddlerProps: true,
         choices: [
             {
                 name: "🍎 Fresh Fruits",
@@ -957,10 +1101,14 @@ function loadStage(index) {
     // Render Animated Cartoon SVG for Character Avatar (Side emoji badge hidden - Face SVG shows expressions!)
     const avatarGraphic = document.getElementById("avatarGraphic");
     const isNewbornCrying = index === 0;
+    if (index === 1) {
+        gameState.stage1Expression = 'normal';
+    }
     if (index === 2) {
         gameState.stage2Expression = 'normal';
     }
-    avatarGraphic.innerHTML = getCharacterCartoonSVG(index, gameState.gender, gameState.health, gameState.energy, isNewbornCrying, gameState.stage2Expression || 'normal');
+    const currentExpr = index === 1 ? (gameState.stage1Expression || 'normal') : (index === 2 ? (gameState.stage2Expression || 'normal') : 'normal');
+    avatarGraphic.innerHTML = getCharacterCartoonSVG(index, gameState.gender, gameState.health, gameState.energy, isNewbornCrying, currentExpr);
 
     const exprBadge = document.getElementById("expressionBadge");
     if (exprBadge) exprBadge.classList.add("hidden");
@@ -969,9 +1117,23 @@ function loadStage(index) {
     const sceneBg = document.getElementById("sceneBg");
     sceneBg.className = `scene-bg ${stage.bgClass || ''}`;
 
-    // Props setup (Living room matching Reference Image 3)
+    // Props setup
     const sceneProps = document.getElementById("sceneProps");
     sceneProps.innerHTML = "";
+    if (stage.hasToddlerProps) {
+        sceneProps.innerHTML = `
+            <div class="toddler-room-baseboard"></div>
+            <div class="toddler-puzzle-mat"></div>
+            <div class="prop-toy-shelf">
+                <div style="font-size: 1.2rem;">🧸 🤖</div>
+                <div style="font-size: 1.2rem;">🚗 🧱</div>
+            </div>
+            <div class="prop-mini-jcb" title="Mini JCB Excavator Toy">🚜</div>
+            <div class="prop-toy-car" title="Toy Car">🚗</div>
+            <div class="prop-floor-teddy" title="Teddy Bear">🧸</div>
+            <div class="prop-playhouse" title="Playhouse Slide">🏠</div>
+        `;
+    }
     if (stage.hasLivingRoomProps) {
         sceneProps.innerHTML = `
             <div class="living-room-baseboard"></div>
@@ -1090,6 +1252,23 @@ function handleChoiceClick(choice) {
             if (avatarGraphic) {
                 avatarGraphic.innerHTML = getCharacterCartoonSVG(0, gameState.gender, 95, 95, false);
             }
+        }
+        setTimeout(() => {
+            nextStage();
+        }, 1800);
+        return;
+    }
+
+    // In Stage 1 Toddler Age 3: Facial expression updates on character face SVG
+    if (gameState.currentStageIndex === 1) {
+        const avatarGraphic = document.getElementById("avatarGraphic");
+        if (choice.isHealthy) {
+            gameState.stage1Expression = 'healthy';
+        } else {
+            gameState.stage1Expression = 'unhealthy';
+        }
+        if (avatarGraphic) {
+            avatarGraphic.innerHTML = getCharacterCartoonSVG(1, gameState.gender, gameState.health, gameState.energy, false, gameState.stage1Expression);
         }
         setTimeout(() => {
             nextStage();
