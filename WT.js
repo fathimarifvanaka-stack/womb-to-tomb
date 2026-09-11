@@ -459,6 +459,15 @@ const lifeStages = [
                 message: "You played on the mobile phone! You smiled, but your energy dropped and dark circles appeared under your eyes."
             },
             {
+                name: "📚 Read Story Books",
+                img: "📚",
+                health: 12, energy: 8, activity: 4,
+                expression: "📖",
+                isHealthy: true,
+                isBookReading: true,
+                message: "You sat comfortably in the living room reading story books! Your mind feels inspired and your focus improved! 📚✨"
+            },
+            {
                 name: "⚽ Go Outside to Play",
                 img: "🚪",
                 health: 10, energy: 8, activity: 12,
@@ -813,8 +822,36 @@ function loadStage(index) {
     sceneProps.innerHTML = "";
     if (stage.hasLivingRoomProps) {
         sceneProps.innerHTML = `
-            <div class="prop-sofa"></div>
-            <div class="prop-table"></div>
+            <div class="living-room-baseboard"></div>
+            <div class="living-room-carpet"></div>
+            <div class="prop-sofa">
+                <div class="sofa-back"></div>
+                <div class="sofa-cushions">
+                    <div class="sofa-cushion"></div>
+                    <div class="sofa-cushion"></div>
+                </div>
+                <div class="sofa-arm-left"></div>
+                <div class="sofa-arm-right"></div>
+            </div>
+            <div class="prop-table">
+                <div class="table-top">
+                    <span class="table-book">📖</span>
+                    <span class="table-vase">🏺🌸</span>
+                </div>
+                <div class="table-legs">
+                    <div class="table-leg"></div>
+                    <div class="table-leg"></div>
+                </div>
+            </div>
+            <div class="prop-bookshelf">
+                <div class="shelf-label">📚 BOOKS</div>
+                <div class="shelf-items">📕 📘 📗 📙</div>
+            </div>
+            <div class="prop-lamp">
+                <div class="lamp-shade">💡</div>
+                <div class="lamp-pole"></div>
+                <div class="lamp-base"></div>
+            </div>
         `;
     }
 
@@ -867,6 +904,14 @@ function handleChoiceClick(choice) {
     if (choice.isScreenTime) {
         gameState.screenTimeCount++;
         document.getElementById("darkCirclesOverlay").classList.remove("hidden");
+    }
+
+    if (choice.isBookReading) {
+        document.getElementById("darkCirclesOverlay").classList.add("hidden");
+        const thoughtContent = document.getElementById("thoughtContent");
+        if (thoughtContent) thoughtContent.textContent = "📚✨";
+        const thoughtBubble = document.getElementById("thoughtBubble");
+        if (thoughtBubble) thoughtBubble.classList.remove("hidden");
     }
 
     updateHUD();

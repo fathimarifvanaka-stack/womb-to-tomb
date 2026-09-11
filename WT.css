@@ -1173,46 +1173,206 @@ body {
 }
 
 .scene-bg.living-room {
-    background: radial-gradient(circle at center, #ffffff 0%, #fef3c7 70%, #fde68a 100%);
+    background: linear-gradient(180deg, #fef9c3 0%, #fef08a 60%, #eab308 60%, #ca8a04 100%);
+    position: relative;
 }
 
-.scene-props {
+.living-room-baseboard {
     position: absolute;
-    inset: 0;
-    pointer-events: none;
-}
-
-.prop-sofa {
-    position: absolute;
-    right: 20px;
-    bottom: 25px;
-    width: 120px;
-    height: 70px;
-    background: #557c55;
-    border-radius: 16px 16px 8px 8px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.prop-sofa::before {
-    content: '';
-    position: absolute;
-    top: -20px;
+    bottom: 60px;
     left: 0;
     right: 0;
-    height: 35px;
-    background: #406240;
-    border-radius: 12px 12px 0 0;
+    height: 12px;
+    background: #a16207;
+    border-top: 2px solid #713f12;
 }
 
+.living-room-carpet {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    height: 48px;
+    background: linear-gradient(135deg, #fbcfe8, #f472b6);
+    border: 3px dashed #db2777;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(219, 39, 119, 0.25);
+}
+
+/* Plush Olive Green Sofa */
+.prop-sofa {
+    position: absolute;
+    right: 14px;
+    bottom: 22px;
+    width: 110px;
+    height: 85px;
+    z-index: 2;
+}
+
+.sofa-back {
+    position: absolute;
+    top: 0;
+    left: 8px;
+    right: 8px;
+    height: 45px;
+    background: linear-gradient(180deg, #4d7c0f 0%, #3f6212 100%);
+    border: 3px solid #1a2e05;
+    border-radius: 18px 18px 6px 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.sofa-cushions {
+    position: absolute;
+    bottom: 14px;
+    left: 6px;
+    right: 6px;
+    height: 32px;
+    display: flex;
+    gap: 4px;
+}
+
+.sofa-cushion {
+    flex: 1;
+    background: linear-gradient(180deg, #65a30d 0%, #4d7c0f 100%);
+    border: 2.5px solid #1a2e05;
+    border-radius: 10px;
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.3);
+}
+
+.sofa-arm-left {
+    position: absolute;
+    bottom: 14px;
+    left: -4px;
+    width: 18px;
+    height: 42px;
+    background: #3f6212;
+    border: 2.5px solid #1a2e05;
+    border-radius: 12px 6px 6px 12px;
+}
+
+.sofa-arm-right {
+    position: absolute;
+    bottom: 14px;
+    right: -4px;
+    width: 18px;
+    height: 42px;
+    background: #3f6212;
+    border: 2.5px solid #1a2e05;
+    border-radius: 6px 12px 12px 6px;
+}
+
+/* Polished Oak Coffee Table */
 .prop-table {
     position: absolute;
-    left: 20px;
-    bottom: 25px;
-    width: 90px;
-    height: 45px;
-    background: #b45309;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    left: 14px;
+    bottom: 22px;
+    width: 95px;
+    height: 60px;
+    z-index: 2;
+}
+
+.table-top {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    right: 0;
+    height: 22px;
+    background: linear-gradient(180deg, #d97706 0%, #b45309 100%);
+    border: 2.5px solid #78350f;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 6px;
+}
+
+.table-book {
+    font-size: 14px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.table-vase {
+    font-size: 13px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.table-legs {
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    right: 10px;
+    height: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.table-leg {
+    width: 8px;
+    height: 25px;
+    background: #78350f;
+    border-radius: 2px;
+}
+
+/* Bookshelf on Wall */
+.prop-bookshelf {
+    position: absolute;
+    top: 16px;
+    left: 14px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid #b45309;
+    border-radius: 12px;
+    padding: 4px 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.shelf-label {
+    font-family: var(--font-heading);
+    font-size: 9px;
+    font-weight: 900;
+    color: #78350f;
+}
+
+.shelf-items {
+    font-size: 14px;
+}
+
+/* Cozy Floor Lamp */
+.prop-lamp {
+    position: absolute;
+    top: 15px;
+    right: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lamp-shade {
+    font-size: 22px;
+    filter: drop-shadow(0 0 10px #fef08a);
+    animation: lampGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes lampGlow {
+    from { filter: drop-shadow(0 0 6px #fef08a); }
+    to { filter: drop-shadow(0 0 16px #facc15); }
+}
+
+.lamp-pole {
+    width: 4px;
+    height: 40px;
+    background: #94a3b8;
+}
+
+.lamp-base {
+    width: 18px;
+    height: 5px;
+    background: #64748b;
+    border-radius: 4px;
 }
 
 /* Character Avatar Box - Ultra Clear Infant & Character Spotlight */
