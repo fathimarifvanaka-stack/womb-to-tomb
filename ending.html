@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>WOMB TO TOMB - Life Journey Summary</title>
+    <link rel="stylesheet" href="WT.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Fredoka:wght@700;800;900&family=Mali:wght@700;800&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="gameApp">
+    <!-- ==========================================
+         OLD AGE ENDING SCREEN (Dedicated Page)
+    =========================================== -->
+    <section id="endingScreen" class="screen active">
+        <div class="ending-content-box">
+            <div id="endingBadge" class="ending-badge">🌱 HEALTHY LIFESTYLE CHAMPION</div>
+            <h1 id="endingTitle" class="ending-title">You Aged with Vitality!</h1>
+
+            <div class="ending-avatar-box">
+                <div id="endingAvatar" class="ending-avatar">👴</div>
+            </div>
+
+            <p id="endingMessage" class="ending-message">
+                Your choices shaped your life journey. Health, activity, and balance made all the difference!
+            </p>
+
+            <div class="final-stats-card">
+                <div class="final-stat-box">
+                    <span class="f-icon">❤️</span>
+                    <span class="f-label">Final Health</span>
+                    <span id="finalHealthVal" class="f-val">82%</span>
+                </div>
+                <div class="final-stat-box">
+                    <span class="f-icon">⚡</span>
+                    <span class="f-label">Final Energy</span>
+                    <span id="finalEnergyVal" class="f-val">76%</span>
+                </div>
+                <div class="final-stat-box">
+                    <span class="f-icon">🏃</span>
+                    <span class="f-label">Final Fitness</span>
+                    <span id="finalActivityVal" class="f-val">64%</span>
+                </div>
+            </div>
+
+            <div class="ending-actions">
+                <button type="button" id="btnPlayAgain" class="btn-primary">
+                    ↻ PLAY AGAIN
+                </button>
+                <button type="button" id="btnExitGame" class="btn-secondary">
+                    × MAIN MENU
+                </button>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script src="WT.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        initEndingPage();
+    });
+</script>
+</body>
+</html>

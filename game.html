@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>WOMB TO TOMB - Gameplay</title>
+    <link rel="stylesheet" href="WT.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Fredoka:wght@700;800;900&family=Mali:wght@700;800&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="gameApp">
+    <!-- ==========================================
+         MAIN GAMEPLAY SCREEN (Dedicated Page)
+    =========================================== -->
+    <section id="gameScreen" class="screen active">
+        <!-- Top UI HUD Bar (Stats & Timer, 30s Countdown) -->
+        <header class="hud-bar">
+            <div class="stat-pill health-pill" id="statHealth">
+                <span class="stat-icon">❤️</span>
+                <div class="stat-info">
+                    <span class="stat-label">Health</span>
+                    <span class="stat-value" id="healthVal">82%</span>
+                </div>
+                <div class="stat-bar-mini"><div class="stat-fill" id="healthFill" style="width: 82%;"></div></div>
+            </div>
+
+            <div class="stat-pill energy-pill" id="statEnergy">
+                <span class="stat-icon">⚡</span>
+                <div class="stat-info">
+                    <span class="stat-label">Energy</span>
+                    <span class="stat-value" id="energyVal">76%</span>
+                </div>
+                <div class="stat-bar-mini"><div class="stat-fill" id="energyFill" style="width: 76%;"></div></div>
+            </div>
+
+            <div class="stat-pill activity-pill" id="statActivity">
+                <span class="stat-icon">🏃</span>
+                <div class="stat-info">
+                    <span class="stat-label">Fitness</span>
+                    <span class="stat-value" id="activityVal">64%</span>
+                </div>
+                <div class="stat-bar-mini"><div class="stat-fill" id="activityFill" style="width: 64%;"></div></div>
+            </div>
+
+            <div class="timer-pill">
+                <span class="timer-icon">🕚</span>
+                <span id="timerText">60s</span>
+            </div>
+        </header>
+
+        <!-- 60s Progress Bar -->
+        <div class="timer-progress-track">
+            <div id="timerProgressBar" class="timer-progress-fill"></div>
+        </div>
+
+        <!-- Main Dynamic Environment & Character Box -->
+        <main class="game-viewport">
+            <div id="sceneContainer" class="scene-container">
+                <!-- Background Environment Art -->
+                <div id="sceneBg" class="scene-bg hospital-room">
+                    <div id="sceneProps" class="scene-props"></div>
+                </div>
+
+                <!-- Avatar Character Container (No Side Emojis - Face SVG Shows All Expressions!) -->
+                <div id="characterWrapper" class="character-wrapper">
+                    <!-- Physical Character Sprite -->
+                    <div id="avatarGraphic" class="avatar-graphic">👶</div>
+
+                    <!-- Thought Bubble -->
+                    <div id="thoughtBubble" class="thought-bubble hidden">
+                        <span id="thoughtContent">📱</span>
+                    </div>
+
+                    <!-- Low Energy / Dark Circles Eye Filter Overlay -->
+                    <div id="darkCirclesOverlay" class="dark-circles hidden">
+                        <svg viewBox="0 0 100 40" class="circles-svg">
+                            <ellipse cx="35" cy="25" rx="12" ry="6" fill="#1e1b4b" opacity="0.4"/>
+                            <ellipse cx="65" cy="25" rx="12" ry="6" fill="#1e1b4b" opacity="0.4"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event Header & Context Text -->
+            <div class="event-card">
+                <div class="stage-tag" id="stageTag">NEWBORN STAGE</div>
+                <h2 id="eventTitle" class="event-title">Welcome to Life</h2>
+                <p id="eventDesc" class="event-desc">Your journey is about to begin. Choose wisely!</p>
+            </div>
+
+            <!-- Interactive Choices Container -->
+            <div id="choicesGrid" class="choices-grid">
+                <!-- Dynamic Choice Cards Rendered by JS -->
+            </div>
+        </main>
+    </section>
+
+    <!-- ==========================================
+         OUTDOOR MINIGAME MODAL (Age 6 Outdoor Choice)
+    =========================================== -->
+    <div id="minigameModal" class="modal-overlay hidden">
+        <div class="minigame-card">
+            <div class="minigame-header">
+                <h3 id="minigameTitle">⚽ Outdoor Play Minigame</h3>
+                <p id="minigameSub">Score a goal or win your game!</p>
+            </div>
+
+            <div id="minigameArena" class="minigame-arena">
+                <div class="football-goal">
+                    <div class="goal-posts">🥅</div>
+                    <div id="footballBall" class="football-ball">⚽</div>
+                </div>
+                <div id="minigameResultText" class="minigame-result hidden">🎉 GOAL!</div>
+            </div>
+
+            <div class="minigame-actions">
+                <button type="button" id="btnKickMinigame" class="btn-primary">
+                    ⚡ KICK FOOTBALL!
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="WT.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        initGameEnginePage();
+    });
+</script>
+</body>
+</html>
