@@ -374,20 +374,22 @@ const lifeStages = [
         bgClass: "hospital-room",
         choices: [
             {
-                name: "🥛 Warm Milk",
-                img: "🥛",
-                health: 5, energy: 10, activity: 0,
+                name: "🧼 Change Diaper",
+                img: "🧼",
+                health: 15, energy: 10, activity: 5,
                 expression: "😊",
                 isHealthy: true,
-                message: "The baby is happy and satisfied after feeding!"
+                isDiaperChange: true,
+                message: "You changed the diaper! The baby is clean, happy, and satisfied! 😊"
             },
             {
-                name: "🍼 Extra Bottle",
-                img: "🍼",
-                health: 3, energy: 8, activity: 0,
-                expression: "😋",
-                isHealthy: true,
-                message: "The baby enjoys the extra milk!"
+                name: "❌ Don't Change",
+                img: "❌",
+                health: -15, energy: -10, activity: -5,
+                expression: "😭",
+                isHealthy: false,
+                isDiaperRefuse: true,
+                message: "Diaper stayed dirty! The baby cries loudly in intense discomfort! 😭"
             }
         ]
     },
@@ -874,11 +876,21 @@ function handleChoiceClick(choice) {
         return;
     }
 
-    // In Stage 0 Newborn Infant: Feeding milk transforms baby to Happy & Fed state (Floating Hearts & Joyful Smile)
+    // In Stage 0 Newborn Infant: Option to Change Diaper (Happy state) vs Don't Change (Intense Crying state)
     if (gameState.currentStageIndex === 0) {
         const avatarGraphic = document.getElementById("avatarGraphic");
-        if (avatarGraphic) {
-            avatarGraphic.innerHTML = getCharacterCartoonSVG(0, gameState.gender, 95, 95, false);
+        if (choice.isDiaperChange) {
+            if (avatarGraphic) {
+                avatarGraphic.innerHTML = getCharacterCartoonSVG(0, gameState.gender, 95, 95, false);
+            }
+        } else if (choice.isDiaperRefuse) {
+            if (avatarGraphic) {
+                avatarGraphic.innerHTML = getCharacterCartoonSVG(0, gameState.gender, 20, 20, true);
+            }
+        } else {
+            if (avatarGraphic) {
+                avatarGraphic.innerHTML = getCharacterCartoonSVG(0, gameState.gender, 95, 95, false);
+            }
         }
         setTimeout(() => {
             nextStage();
