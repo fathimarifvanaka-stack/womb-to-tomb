@@ -1058,22 +1058,164 @@ function getCharacterCartoonSVG(stageIndex, gender = 'boy', health = 80, energy 
             </div>`;
         }
 
-        case 6: // Age 30 Adult
+        case 6: { // Age 30 Adult (Boy: White Dhoti & White shirt, black mustache, both hands on waist / Girl: White gown, tired facial expression, right hand on waist, left hand on head)
+            const expr = chosenExpression || 'normal';
+            const skinColor = "#ffe0d1";
+            const skinShadow = "#f7bca0";
+
             return `
-            <svg viewBox="0 0 120 210" class="cartoon-char-svg adult-anim">
-                <rect x="42" y="140" width="12" height="55" rx="6" fill="#334155" />
-                <rect x="66" y="140" width="12" height="55" rx="6" fill="#334155" />
-                <ellipse cx="48" cy="195" rx="12" ry="6" fill="#1e293b" />
-                <ellipse cx="72" cy="195" rx="12" ry="6" fill="#1e293b" />
-                <path d="M 26 62 Q 60 56 94 62 L 88 140 Q 60 144 32 140 Z" fill="${shirtColor}" />
-                <!-- Collar -->
-                <polygon points="50,62 60,78 70,62" fill="#ffffff" />
-                <circle cx="60" cy="35" r="23" fill="${skinColor}" />
-                <path d="M 35 28 C 30 2, 90 2, 85 28 Z" fill="${hairColor}" />
-                <circle cx="48" cy="33" r="3.5" fill="#0f172a" />
-                <circle cx="72" cy="33" r="3.5" fill="#0f172a" />
-                <path d="M 52 43 Q 60 48 68 43" fill="none" stroke="#e11d48" stroke-width="3" stroke-linecap="round"/>
-            </svg>`;
+            <div class="detailed-adult30-container stage6-adult">
+                <svg viewBox="0 0 200 260" class="cartoon-char-svg adult30-detailed-svg">
+                    <defs>
+                        <radialGradient id="adultCheekBlush" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#ff7b92" stop-opacity="0.8" />
+                            <stop offset="100%" stop-color="#ff7b92" stop-opacity="0" />
+                        </radialGradient>
+                    </defs>
+
+                    <!-- 1. Standing Legs & Outfit Base (Boy: White Dhoti / Girl: White Gown) -->
+                    <g class="adult30-legs">
+                        ${isGirl ? `
+                            <!-- Girl (Age 30): White Gown covering full body down to feet -->
+                            <rect x="74" y="190" width="14" height="40" fill="${skinColor}"/>
+                            <rect x="112" y="190" width="14" height="40" fill="${skinColor}"/>
+                        ` : `
+                            <!-- Boy (Age 30): White Traditional Dhoti with Gold Border -->
+                            <path d="M 68 145 L 132 145 L 142 220 Q 100 226 58 220 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+                            <!-- Gold Border Trim on Dhoti -->
+                            <path d="M 72 145 L 76 220 M 128 145 L 124 220 M 60 216 Q 100 224 140 216" stroke="#d97706" stroke-width="3.5" fill="none"/>
+                        `}
+
+                        <!-- Black Shoes / Sandals -->
+                        <path d="M 64 224 C 64 218 88 216 94 224 L 94 236 L 62 236 Z" fill="#0f172a" stroke="#000000" stroke-width="2"/>
+                        <path d="M 106 224 C 106 218 130 216 136 224 L 138 236 L 106 236 Z" fill="#0f172a" stroke="#000000" stroke-width="2"/>
+                    </g>
+
+                    <!-- 2. Torso Outfit -->
+                    <g class="adult30-torso">
+                        ${isGirl ? `
+                            <!-- Girl: Elegant White Gown covering body -->
+                            <path d="M 65 85 Q 100 80 135 85 L 142 215 Q 100 220 58 215 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+                            <!-- Soft Gold Neckline Trim -->
+                            <path d="M 75 85 Q 100 98 125 85" stroke="#d97706" stroke-width="3" fill="none"/>
+                            <!-- Full Sleeves -->
+                            <path d="M 65 85 Q 45 105 52 140" stroke="#ffffff" stroke-width="14" stroke-linecap="round" fill="none"/>
+                            <path d="M 135 85 Q 155 70 115 48" stroke="#ffffff" stroke-width="14" stroke-linecap="round" fill="none"/>
+                        ` : `
+                            <!-- Boy: White Full Sleeve Shirt (boy dressing white full sleeve shirt) -->
+                            <path d="M 65 85 Q 100 80 135 85 L 130 148 Q 100 152 70 148 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+                            <!-- Shirt Collar & Gold/White Buttons -->
+                            <polygon points="82,85 100,98 118,85" fill="#f8fafc"/>
+                            <line x1="100" y1="98" x2="100" y2="148" stroke="#cbd5e1" stroke-width="2"/>
+                            <circle cx="100" cy="110" r="2.5" fill="#d97706"/>
+                            <circle cx="100" cy="125" r="2.5" fill="#d97706"/>
+                            <circle cx="100" cy="140" r="2.5" fill="#d97706"/>
+                            <!-- Full Sleeves bending to waist -->
+                            <path d="M 65 85 Q 40 110 65 140" stroke="#ffffff" stroke-width="15" stroke-linecap="round" fill="none"/>
+                            <path d="M 135 85 Q 160 110 135 140" stroke="#ffffff" stroke-width="15" stroke-linecap="round" fill="none"/>
+                        `}
+                    </g>
+
+                    <!-- 3. Arms & Hands Poses -->
+                    ${isGirl ? `
+                        <!-- Girl: Right hand put on waist, Left hand put on head (movement: right hand put on waist left hand put on head) -->
+                        <g class="girl-hands-waist-head">
+                            <!-- Right Arm bent down to waist -->
+                            <path d="M 65 88 Q 42 110 65 140" stroke="${skinColor}" stroke-width="12" stroke-linecap="round" fill="none"/>
+                            <circle cx="65" cy="140" r="7" fill="${skinColor}"/>
+                            
+                            <!-- Left Arm raised up putting left hand on head -->
+                            <path d="M 135 88 Q 162 70 112 45" stroke="${skinColor}" stroke-width="12" stroke-linecap="round" fill="none"/>
+                            <circle cx="108" cy="45" r="7" fill="${skinColor}"/>
+                        </g>
+                    ` : `
+                        <!-- Boy: Both hands placed on waist (place both handa on waist) -->
+                        <g class="boy-both-hands-waist">
+                            <!-- Right Arm bent to waist -->
+                            <path d="M 65 88 Q 40 110 65 140" stroke="${skinColor}" stroke-width="14" stroke-linecap="round" fill="none"/>
+                            <ellipse cx="65" cy="140" rx="8" ry="7" fill="${skinColor}"/>
+
+                            <!-- Left Arm bent to waist -->
+                            <path d="M 135 88 Q 160 110 135 140" stroke="${skinColor}" stroke-width="14" stroke-linecap="round" fill="none"/>
+                            <ellipse cx="135" cy="140" rx="8" ry="7" fill="${skinColor}"/>
+                        </g>
+                    `}
+
+                    <!-- 4. Head & Face Details (Boy: Black Mustache / Girl: Tired expression) -->
+                    <g class="adult30-head">
+                        <circle cx="58" cy="52" r="10" fill="${skinColor}" stroke="${skinShadow}" stroke-width="1.5"/>
+                        <circle cx="142" cy="52" r="10" fill="${skinColor}" stroke="${skinShadow}" stroke-width="1.5"/>
+
+                        <circle cx="100" cy="52" r="44" fill="${skinColor}" stroke="${skinShadow}" stroke-width="1.5"/>
+
+                        <!-- Hair -->
+                        ${isGirl ? `
+                            <!-- Girl Hair: Long Black/Dark Brown Bun Hair -->
+                            <g class="girl-adult-hair">
+                                <circle cx="100" cy="18" r="16" fill="#1e293b"/>
+                                <path d="M 58 40 C 45 15, 80 12, 100 18 C 120 12, 155 15, 142 40 C 130 25, 70 25, 58 40 Z" fill="#334155"/>
+                            </g>
+                        ` : `
+                            <!-- Boy Hair: Neat Black Hair with Side Part -->
+                            <g class="boy-adult-hair">
+                                <path d="M 54 40 C 40 18, 70 12, 92 18 C 108 8, 148 16, 146 42 C 132 24, 114 22, 102 28 Q 78 24 54 40 Z" fill="#0f172a"/>
+                            </g>
+                        `}
+
+                        <!-- Boy Black Mustache (on face there should come mustache in black colour) -->
+                        ${!isGirl ? `
+                            <g class="boy-black-mustache">
+                                <path d="M 82 66 Q 92 62 100 67 Q 108 62 118 66 Q 108 72 100 68 Q 92 72 82 66 Z" fill="#000000"/>
+                            </g>
+                        ` : ''}
+
+                        <!-- Dark Circles under eyes if Screen Time / Mobile selected -->
+                        ${expr === 'unhealthy' ? `
+                            <ellipse cx="81" cy="56" rx="11" ry="5" fill="#4338ca" opacity="0.35"/>
+                            <ellipse cx="119" cy="56" rx="11" ry="5" fill="#4338ca" opacity="0.35"/>
+                        ` : ''}
+
+                        <!-- 5. DYNAMIC FACIAL EXPRESSIONS (Age 30: HAPPY if healthy, UNLIKE/TIRED if unhealthy) -->
+                        ${expr === 'healthy' ? `
+                            <!-- HEALTHY CHOICE CHOSEN: HAPPY / EXCITED JOYFUL EXPRESSION -->
+                            <path d="M 70 34 Q 80 24 90 34" stroke="#3b2314" stroke-width="3" fill="none" stroke-linecap="round"/>
+                            <path d="M 110 34 Q 120 24 130 34" stroke="#3b2314" stroke-width="3" fill="none" stroke-linecap="round"/>
+                            <g>
+                                <circle cx="81" cy="48" r="10" fill="#0284c7"/>
+                                <circle cx="119" cy="48" r="10" fill="#0284c7"/>
+                                <circle cx="81" cy="48" r="6" fill="#0f172a"/>
+                                <circle cx="119" cy="48" r="6" fill="#0f172a"/>
+                                <circle cx="78" cy="45" r="3.5" fill="#ffffff"/>
+                                <circle cx="116" cy="45" r="3.5" fill="#ffffff"/>
+                            </g>
+                            <path d="M 80 68 Q 100 96 120 68 Z" fill="#e63946" stroke="#be123c" stroke-width="2.5"/>
+                            <path d="M 86 80 Q 100 88 114 80" fill="#ff85a1"/>
+                        ` : (expr === 'unhealthy' ? `
+                            <!-- UNHEALTHY CHOICE CHOSEN: UNLIKE / TIRED / ANNOYED EXPRESSION -->
+                            <path d="M 70 38 L 88 44" stroke="#3b2314" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M 112 44 L 130 38" stroke="#3b2314" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M 72 48 L 84 54 L 72 60" fill="none" stroke="#3b2314" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M 128 48 L 116 54 L 128 60" fill="none" stroke="#3b2314" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M 84 74 Q 92 68 100 74 Q 108 80 116 74" fill="none" stroke="#be123c" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M 142 34 C 138 40 142 46 146 46 C 150 46 154 40 146 34 Z" fill="#38bdf8"/>
+                        ` : `
+                            <!-- NORMAL / IDLE EXPRESSION (NO OPTION CHOSEN YET) -->
+                            <path d="M 70 38 Q 80 32 90 38" stroke="#3b2314" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                            <path d="M 110 38 Q 120 32 130 38" stroke="#3b2314" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                            <g>
+                                <circle cx="81" cy="48" r="9" fill="#0284c7"/>
+                                <circle cx="119" cy="48" r="9" fill="#0284c7"/>
+                                <circle cx="81" cy="48" r="5" fill="#0f172a"/>
+                                <circle cx="119" cy="48" r="5" fill="#0f172a"/>
+                                <circle cx="78" cy="45" r="3" fill="#ffffff"/>
+                                <circle cx="116" cy="45" r="3" fill="#ffffff"/>
+                            </g>
+                            <path d="M 84 70 Q 100 82 116 70" fill="none" stroke="#be123c" stroke-width="3" stroke-linecap="round"/>
+                        `)}
+                    </g>
+                </svg>
+            </div>`;
+        }
 
         default: // Old Age (Senior)
             return `
@@ -1546,16 +1688,19 @@ function loadStage(index) {
     // Render Animated Cartoon SVG for Character Avatar (Side emoji badge hidden - Face SVG shows expressions!)
     const avatarGraphic = document.getElementById("avatarGraphic");
     const isNewbornCrying = index === 0;
-    if (index === 1) {
-        gameState.stage1Expression = 'normal';
-    }
-    if (index === 2) {
-        gameState.stage2Expression = 'normal';
-    }
-    if (index === 3) {
-        gameState.stage3Expression = 'normal';
-    }
-    const currentExpr = index === 1 ? (gameState.stage1Expression || 'normal') : (index === 2 ? (gameState.stage2Expression || 'normal') : (index === 3 ? (gameState.stage3Expression || 'normal') : 'normal'));
+    if (index === 1) gameState.stage1Expression = 'normal';
+    if (index === 2) gameState.stage2Expression = 'normal';
+    if (index === 3) gameState.stage3Expression = 'normal';
+    if (index === 4) gameState.stage4Expression = 'normal';
+    if (index === 5) gameState.stage5Expression = 'normal';
+    if (index === 6) gameState.stage6Expression = 'normal';
+
+    const currentExpr = index === 1 ? (gameState.stage1Expression || 'normal')
+                      : index === 2 ? (gameState.stage2Expression || 'normal')
+                      : index === 3 ? (gameState.stage3Expression || 'normal')
+                      : index === 4 ? (gameState.stage4Expression || 'normal')
+                      : index === 5 ? (gameState.stage5Expression || 'normal')
+                      : index === 6 ? (gameState.stage6Expression || 'normal') : 'normal';
     avatarGraphic.innerHTML = getCharacterCartoonSVG(index, gameState.gender, gameState.health, gameState.energy, isNewbornCrying, currentExpr);
 
     const exprBadge = document.getElementById("expressionBadge");
@@ -1762,6 +1907,26 @@ function handleChoiceClick(choice) {
         }
         if (avatarGraphic) {
             avatarGraphic.innerHTML = getCharacterCartoonSVG(3, gameState.gender, gameState.health, gameState.energy, false, gameState.stage3Expression);
+        }
+        setTimeout(() => {
+            nextStage();
+        }, 1800);
+        return;
+    }
+
+    // In Stage 6 Adulthood Age 30: Happy if healthy, Unlike if unhealthy, dark circles for screen time
+    if (gameState.currentStageIndex === 6) {
+        const avatarGraphic = document.getElementById("avatarGraphic");
+        if (choice.isHealthy) {
+            gameState.stage6Expression = 'healthy';
+        } else {
+            gameState.stage6Expression = 'unhealthy';
+        }
+        if (choice.isScreenTime) {
+            document.getElementById("darkCirclesOverlay").classList.remove("hidden");
+        }
+        if (avatarGraphic) {
+            avatarGraphic.innerHTML = getCharacterCartoonSVG(6, gameState.gender, gameState.health, gameState.energy, false, gameState.stage6Expression);
         }
         setTimeout(() => {
             nextStage();
