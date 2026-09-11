@@ -1211,7 +1211,7 @@ body {
     background: #ffffff;
     border: 3px solid #cbd5e1;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-wrap: wrap;
     align-content: space-around;
@@ -1226,7 +1226,7 @@ body {
     left: 20px;
     font-size: 2rem;
     z-index: 2;
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
 }
 
 .prop-toy-car {
@@ -1235,7 +1235,7 @@ body {
     right: 25px;
     font-size: 1.8rem;
     z-index: 2;
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
 }
 
 .prop-floor-teddy {
@@ -1244,7 +1244,7 @@ body {
     left: 135px;
     font-size: 1.8rem;
     z-index: 2;
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
 }
 
 .prop-playhouse {
@@ -1257,9 +1257,19 @@ body {
 
 /* Waving Bye-Bye Animation for Toddler Left Arm */
 @keyframes byeByeWave {
-    0%, 100% { transform: rotate(0deg); }
-    25% { transform: rotate(14deg); }
-    75% { transform: rotate(-14deg); }
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(14deg);
+    }
+
+    75% {
+        transform: rotate(-14deg);
+    }
 }
 
 .left-arm-wave-anim {
@@ -1269,8 +1279,15 @@ body {
 
 /* Moving Toy Front and Back Animation for Toddler Right Arm */
 @keyframes moveToyBackForth {
-    0%, 100% { transform: translateX(0px) translateY(0px); }
-    50% { transform: translateX(-10px) translateY(5px); }
+
+    0%,
+    100% {
+        transform: translateX(0px) translateY(0px);
+    }
+
+    50% {
+        transform: translateX(-10px) translateY(5px);
+    }
 }
 
 .right-arm-toy-anim {
@@ -1305,7 +1322,7 @@ body {
     background: #d97706;
     border: 4px solid #78350f;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1383,7 +1400,7 @@ body {
     background: linear-gradient(180deg, #38bdf8 0%, #7dd3fc 100%);
     border: 4px solid #ffffff;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     overflow: hidden;
     z-index: 1;
 }
@@ -1525,7 +1542,7 @@ body {
     background: #b45309;
     border: 2.5px solid #78350f;
     border-radius: 6px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1573,15 +1590,23 @@ body {
 
 /* Hand-to-Mouth Animation for Stage 2 Kid */
 @keyframes handMouthMove {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-4px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
 }
 
 .kid-arm-mouth-anim {
     animation: handMouthMove 2s ease-in-out infinite;
     transform-origin: 140px 88px;
 }
-    font-size: 14px;
+
+font-size: 14px;
 }
 
 /* Cozy Floor Lamp */
@@ -1601,8 +1626,13 @@ body {
 }
 
 @keyframes lampGlow {
-    from { filter: drop-shadow(0 0 6px #fef08a); }
-    to { filter: drop-shadow(0 0 16px #facc15); }
+    from {
+        filter: drop-shadow(0 0 6px #fef08a);
+    }
+
+    to {
+        filter: drop-shadow(0 0 16px #facc15);
+    }
 }
 
 .lamp-pole {

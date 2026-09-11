@@ -746,43 +746,317 @@ function getCharacterCartoonSVG(stageIndex, gender = 'boy', health = 80, energy 
             </div>`;
         }
 
-        case 4: // Age 12 Teenager
-            return `
-            <svg viewBox="0 0 120 200" class="cartoon-char-svg teen-anim">
-                <rect x="42" y="135" width="12" height="48" rx="6" fill="#1e293b" />
-                <rect x="66" y="135" width="12" height="48" rx="6" fill="#1e293b" />
-                <ellipse cx="48" cy="183" rx="12" ry="6" fill="#ec4899" />
-                <ellipse cx="72" cy="183" rx="12" ry="6" fill="#ec4899" />
-                <!-- Hoodie -->
-                <path d="M 28 65 Q 60 60 92 65 L 88 135 Q 60 138 32 135 Z" fill="${shirtColor}" />
-                <!-- Hoodie Strings -->
-                <path d="M 54 75 L 54 95" stroke="#ffffff" stroke-width="2"/>
-                <path d="M 66 75 L 66 95" stroke="#ffffff" stroke-width="2"/>
-                <circle cx="60" cy="38" r="24" fill="${skinColor}" />
-                <path d="M 34 32 C 30 5, 90 5, 86 32 Z" fill="${hairColor}" />
-                <!-- Cool Headphones -->
-                <path d="M 34 35 A 26 26 0 0 1 86 35" fill="none" stroke="#f59e0b" stroke-width="5"/>
-                <rect x="30" y="30" width="8" height="16" rx="4" fill="#f59e0b"/>
-                <rect x="82" y="30" width="8" height="16" rx="4" fill="#f59e0b"/>
-                <circle cx="48" cy="36" r="3.5" fill="#0f172a" />
-                <circle cx="72" cy="36" r="3.5" fill="#0f172a" />
-                <path d="M 54 45 Q 60 50 66 45" fill="none" stroke="#e11d48" stroke-width="3" stroke-linecap="round"/>
-            </svg>`;
+        case 4: { // Age 12 Teenager (Girl: Red full sleeve flower gown, ponytail hair, hands touching hair, black shoes / Boy: Black shirt, white pants, messy brown hair, left hand in pocket, black shoes)
+            const expr = chosenExpression || 'normal';
+            const skinColor = "#ffe0d1";
+            const skinShadow = "#f7bca0";
 
-        case 5: // Age 18 Young Adult
             return `
-            <svg viewBox="0 0 120 210" class="cartoon-char-svg adult-anim">
-                <rect x="42" y="140" width="12" height="55" rx="6" fill="#0f172a" />
-                <rect x="66" y="140" width="12" height="55" rx="6" fill="#0f172a" />
-                <ellipse cx="48" cy="195" rx="12" ry="6" fill="#3b82f6" />
-                <ellipse cx="72" cy="195" rx="12" ry="6" fill="#3b82f6" />
-                <path d="M 26 62 Q 60 56 94 62 L 88 140 Q 60 144 32 140 Z" fill="${shirtColor}" />
-                <circle cx="60" cy="35" r="23" fill="${skinColor}" />
-                <path d="M 35 28 C 30 2, 90 2, 85 28 Z" fill="${hairColor}" />
-                <circle cx="48" cy="33" r="3.5" fill="#0f172a" />
-                <circle cx="72" cy="33" r="3.5" fill="#0f172a" />
-                <path d="M 52 42 Q 60 48 68 42" fill="none" stroke="#e11d48" stroke-width="3" stroke-linecap="round"/>
-            </svg>`;
+            <div class="detailed-teen-container stage4-teen">
+                <svg viewBox="0 0 200 250" class="cartoon-char-svg teen-detailed-svg">
+                    <defs>
+                        <radialGradient id="teenCheekBlush" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#ff7b92" stop-opacity="0.8" />
+                            <stop offset="100%" stop-color="#ff7b92" stop-opacity="0" />
+                        </radialGradient>
+                    </defs>
+
+                    <!-- 1. Standing Legs & Black Shoes -->
+                    <g class="teen-legs">
+                        ${isGirl ? `
+                            <!-- Girl: Full Sleeve Red Flower Gown covering entire body down to black shoes -->
+                            <rect x="74" y="180" width="14" height="35" fill="${skinColor}"/>
+                            <rect x="112" y="180" width="14" height="35" fill="${skinColor}"/>
+                        ` : `
+                            <!-- Boy: White Pants covering entire body -->
+                            <rect x="70" y="145" width="22" height="70" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+                            <rect x="108" y="145" width="22" height="70" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+                        `}
+
+                        <!-- Black Shoes (both wore black shoes) -->
+                        <path d="M 64 216 C 64 210 88 208 94 216 L 94 228 L 62 228 Z" fill="#0f172a" stroke="#000000" stroke-width="2"/>
+                        <rect x="60" y="224" width="36" height="5" rx="2" fill="#334155"/>
+
+                        <path d="M 106 216 C 106 210 130 208 136 216 L 138 228 L 106 228 Z" fill="#0f172a" stroke="#000000" stroke-width="2"/>
+                        <rect x="104" y="224" width="36" height="5" rx="2" fill="#334155"/>
+                    </g>
+
+                    <!-- 2. Torso Outfit -->
+                    <g class="teen-torso">
+                        ${isGirl ? `
+                            <!-- Girl: Full Sleeve Gown in Red Colour with White Flower Print covering full body -->
+                            <path d="M 65 85 Q 100 80 135 85 L 145 210 Q 100 215 55 210 Z" fill="#dc2626" stroke="#991b1b" stroke-width="1.5"/>
+                            <!-- White Flower Print Pattern -->
+                            <g fill="#ffffff" opacity="0.9">
+                                <circle cx="80" cy="110" r="4"/><circle cx="76" cy="110" r="3"/><circle cx="84" cy="110" r="3"/><circle cx="80" cy="106" r="3"/><circle cx="80" cy="114" r="3"/>
+                                <circle cx="120" cy="120" r="4"/><circle cx="116" cy="120" r="3"/><circle cx="124" cy="120" r="3"/><circle cx="120" cy="116" r="3"/><circle cx="120" cy="124" r="3"/>
+                                <circle cx="95" cy="150" r="4"/><circle cx="91" cy="150" r="3"/><circle cx="99" cy="150" r="3"/><circle cx="95" cy="146" r="3"/><circle cx="95" cy="154" r="3"/>
+                                <circle cx="130" cy="165" r="4"/><circle cx="126" cy="165" r="3"/><circle cx="134" cy="165" r="3"/><circle cx="130" cy="161" r="3"/><circle cx="130" cy="169" r="3"/>
+                                <circle cx="70" cy="175" r="4"/><circle cx="66" cy="175" r="3"/><circle cx="74" cy="175" r="3"/><circle cx="70" cy="171" r="3"/><circle cx="70" cy="179" r="3"/>
+                                <circle cx="105" cy="195" r="4"/><circle cx="101" cy="195" r="3"/><circle cx="109" cy="195" r="3"/><circle cx="105" cy="191" r="3"/><circle cx="105" cy="199" r="3"/>
+                            </g>
+                            <!-- Full Sleeves -->
+                            <path d="M 65 85 Q 40 100 52 140" stroke="#dc2626" stroke-width="14" stroke-linecap="round" fill="none"/>
+                            <path d="M 135 85 Q 160 100 148 140" stroke="#dc2626" stroke-width="14" stroke-linecap="round" fill="none"/>
+                        ` : `
+                            <!-- Boy: Black Full Sleeve Shirt & White Pants -->
+                            <path d="M 65 85 Q 100 80 135 85 L 130 148 Q 100 152 70 148 Z" fill="#0f172a" stroke="#000000" stroke-width="1.5"/>
+                            <!-- Collar -->
+                            <polygon points="82,85 100,98 118,85" fill="#1e293b"/>
+                            <!-- Full Sleeves -->
+                            <path d="M 65 85 L 48 135" stroke="#0f172a" stroke-width="15" stroke-linecap="round"/>
+                            <path d="M 135 85 L 148 135" stroke="#0f172a" stroke-width="15" stroke-linecap="round"/>
+                        `}
+                    </g>
+
+                    <!-- 3. Arms & Hands Poses -->
+                    ${isGirl ? `
+                        <!-- Girl: Both hands touching her shoulder-length ponytail hair (her both hands should touch hair) -->
+                        <g class="girl-hands-touch-hair">
+                            <!-- Right Arm raised touching right side of hair -->
+                            <path d="M 65 88 Q 38 75 52 48" stroke="${skinColor}" stroke-width="12" stroke-linecap="round" fill="none"/>
+                            <circle cx="52" cy="46" r="7" fill="${skinColor}"/>
+                            <!-- Left Arm raised touching left side of hair -->
+                            <path d="M 135 88 Q 162 75 148 48" stroke="${skinColor}" stroke-width="12" stroke-linecap="round" fill="none"/>
+                            <circle cx="148" cy="46" r="7" fill="${skinColor}"/>
+                        </g>
+                    ` : `
+                        <!-- Boy: Left hand inside left pant pocket (his left hand should be in left pocket of the pant) -->
+                        <g class="boy-arm-pocket">
+                            <!-- Right Arm resting naturally -->
+                            <path d="M 60 88 Q 45 115 50 135" stroke="${skinColor}" stroke-width="14" stroke-linecap="round" fill="none"/>
+                            <circle cx="50" cy="138" r="8" fill="${skinColor}"/>
+                            
+                            <!-- Left Arm tucked into left pant pocket -->
+                            <path d="M 140 88 Q 158 115 130 148" stroke="${skinColor}" stroke-width="14" stroke-linecap="round" fill="none"/>
+                            <ellipse cx="128" cy="148" rx="8" ry="10" fill="${skinColor}"/>
+                        </g>
+                    `}
+
+                    <!-- 4. Head & Hair -->
+                    <g class="teen-head">
+                        <circle cx="58" cy="52" r="10" fill="${skinColor}" stroke="${skinShadow}" stroke-width="1.5"/>
+                        <circle cx="142" cy="52" r="10" fill="${skinColor}" stroke="${skinShadow}" stroke-width="1.5"/>
+
+                        <circle cx="100" cy="52" r="44" fill="${skinColor}" stroke="${skinShadow}" stroke-width="1.5"/>
+
+                        ${isGirl ? `
+                            <!-- Girl: Ponytail hair reaching shoulder length (pony tile upto shoiulder length) -->
+                            <g class="girl-ponytail-hair">
+                                <!-- Shoulder-length Ponytail flow -->
+                                <path d="M 142 40 Q 170 60 162 105 C 150 108 140 95 144 65 Z" fill="#5c3d2e"/>
+                                <path d="M 58 40 Q 30 60 38 105 C 50 108 60 95 56 65 Z" fill="#5c3d2e"/>
+                                <!-- Top Hair & Hair Band -->
+                                <path d="M 58 38 C 45 15, 80 12, 100 18 C 120 12, 155 15, 142 38 C 130 25, 70 25, 58 38 Z" fill="#7c523e"/>
+                                <circle cx="140" cy="42" r="6" fill="#dc2626"/>
+                            </g>
+                        ` : `
+                            <!-- Boy: Messy Brown Hair (a little brown hair in a messy style) -->
+                            <g class="boy-messy-brown-hair">
+                                <path d="M 52 40 C 38 16, 70 10, 92 18 C 108 8, 148 16, 148 42 C 134 24, 114 22, 102 28 Q 78 24 52 40 Z" fill="#5c3d2e"/>
+                                <path d="M 58 30 L 70 12 L 78 24 L 92 8 L 106 22 L 122 10 L 138 28" stroke="#7c523e" stroke-width="4" stroke-linecap="round" fill="none"/>
+                            </g>
+                        `}
+
+                        <!-- Rosy Cheeks -->
+                        <ellipse cx="70" cy="60" rx="9" ry="6" fill="url(#teenCheekBlush)"/>
+                        <ellipse cx="130" cy="60" rx="9" ry="6" fill="url(#teenCheekBlush)"/>
+
+                        <!-- 5. DYNAMIC FACIAL EXPRESSIONS DIRECTLY ON SVG FACE -->
+                        ${expr === 'healthy' ? `
+                            <!-- HEALTHY OPTION CHOSEN: UNLIKE / RELUCTANT EXPRESSION -->
+                            <path d="M 70 38 L 88 44" stroke="#3b2314" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M 112 44 L 130 38" stroke="#3b2314" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M 72 48 L 84 54 L 72 60" fill="none" stroke="#3b2314" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M 128 48 L 116 54 L 128 60" fill="none" stroke="#3b2314" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M 84 72 Q 92 66 100 72 Q 108 78 116 72" fill="none" stroke="#be123c" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M 142 34 C 138 40 142 46 146 46 C 150 46 154 40 146 34 Z" fill="#38bdf8"/>
+                        ` : (expr === 'unhealthy' ? `
+                            <!-- UNHEALTHY OPTION CHOSEN: CHEERING UP / SUPER HAPPY / LIKE EXPRESSION -->
+                            <path d="M 70 34 Q 80 24 90 34" stroke="#3b2314" stroke-width="3" fill="none" stroke-linecap="round"/>
+                            <path d="M 110 34 Q 120 24 130 34" stroke="#3b2314" stroke-width="3" fill="none" stroke-linecap="round"/>
+                            <g>
+                                <circle cx="81" cy="48" r="10" fill="#0284c7"/>
+                                <circle cx="119" cy="48" r="10" fill="#0284c7"/>
+                                <circle cx="81" cy="48" r="6" fill="#0f172a"/>
+                                <circle cx="119" cy="48" r="6" fill="#0f172a"/>
+                                <circle cx="78" cy="45" r="3.5" fill="#ffffff"/>
+                                <circle cx="116" cy="45" r="3.5" fill="#ffffff"/>
+                            </g>
+                            <path d="M 80 66 Q 100 94 120 66 Z" fill="#e63946" stroke="#be123c" stroke-width="2.5"/>
+                            <path d="M 86 78 Q 100 86 114 78" fill="#ff85a1"/>
+                            <path d="M 84 67 L 116 67" stroke="#ffffff" stroke-width="2.5"/>
+                        ` : `
+                            <!-- NORMAL / IDLE EXPRESSION (NO OPTION CHOSEN YET) -->
+                            <path d="M 70 38 Q 80 32 90 38" stroke="#3b2314" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                            <path d="M 110 38 Q 120 32 130 38" stroke="#3b2314" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                            <g>
+                                <circle cx="81" cy="48" r="9" fill="#0284c7"/>
+                                <circle cx="119" cy="48" r="9" fill="#0284c7"/>
+                                <circle cx="81" cy="48" r="5" fill="#0f172a"/>
+                                <circle cx="119" cy="48" r="5" fill="#0f172a"/>
+                                <circle cx="78" cy="45" r="3" fill="#ffffff"/>
+                                <circle cx="116" cy="45" r="3" fill="#ffffff"/>
+                            </g>
+                            <path d="M 84 68 Q 100 82 116 68" fill="none" stroke="#be123c" stroke-width="3" stroke-linecap="round"/>
+                        `)}
+                    </g>
+                </svg>
+            </div>`;
+        }
+
+        case 5: { // Age 15 Teenager/Young Adult (Girl: Brown full sleeve flower gown, height +5cm / Boy: White shirt, black pants, height +7cm)
+            const expr = chosenExpression || 'normal';
+            const skinColor = "#ffe0d1";
+            const skinShadow = "#f7bca0";
+
+            return `
+            <div class="detailed-teen15-container stage5-teen">
+                <svg viewBox="0 0 200 270" class="cartoon-char-svg teen15-detailed-svg">
+                    <defs>
+                        <radialGradient id="teen15CheekBlush" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#ff7b92" stop-opacity="0.8" />
+                            <stop offset="100%" stop-color="#ff7b92" stop-opacity="0" />
+                        </radialGradient>
+                    </defs>
+
+                    <!-- 1. Standing Legs (Height +5cm for Girl / +7cm for Boy) & Black Shoes -->
+                    <g class="teen15-legs">
+                        ${isGirl ? `
+                            <!-- Girl (Age 15): Height 5cm increase -> Brown Full Sleeve Flower Gown -->
+                            <rect x="74" y="195" width="14" height="42" fill="${skinColor}"/>
+                            <rect x="112" y="195" width="14" height="42" fill="${skinColor}"/>
+                        ` : `
+                            <!-- Boy (Age 15): Height 7cm increase -> Black Pants (pant colour changes to black) -->
+                            <rect x="70" y="150" width="22" height="85" rx="4" fill="#0f172a" stroke="#000000" stroke-width="1.5"/>
+                            <rect x="108" y="150" width="22" height="85" rx="4" fill="#0f172a" stroke="#000000" stroke-width="1.5"/>
+                        `}
+
+                        <!-- Black Shoes (both wore black shoes) -->
+                        <path d="M 64 232 C 64 226 88 224 94 232 L 94 245 L 62 245 Z" fill="#0f172a" stroke="#000000" stroke-width="2"/>
+                        <rect x="60" y="240" width="36" height="5" rx="2" fill="#334155"/>
+
+                        <path d="M 106 232 C 106 226 130 224 136 232 L 138 245 L 106 245 Z" fill="#0f172a" stroke="#000000" stroke-width="2"/>
+                        <rect x="104" y="240" width="36" height="5" rx="2" fill="#334155"/>
+                    </g>
+
+                    <!-- 2. Torso Outfit (Girl Age 15: Brown gown / Boy Age 15: White shirt) -->
+                    <g class="teen15-torso">
+                        ${isGirl ? `
+                            <!-- Girl (Age 15): Dress colour changes into BROWN (full sleeve gown with white flower print) -->
+                            <path d="M 65 85 Q 100 80 135 85 L 145 225 Q 100 230 55 225 Z" fill="#78350f" stroke="#451a03" stroke-width="1.5"/>
+                            <!-- White Flower Print Pattern -->
+                            <g fill="#ffffff" opacity="0.9">
+                                <circle cx="80" cy="110" r="4"/><circle cx="76" cy="110" r="3"/><circle cx="84" cy="110" r="3"/><circle cx="80" cy="106" r="3"/><circle cx="80" cy="114" r="3"/>
+                                <circle cx="120" cy="120" r="4"/><circle cx="116" cy="120" r="3"/><circle cx="124" cy="120" r="3"/><circle cx="120" cy="116" r="3"/><circle cx="120" cy="124" r="3"/>
+                                <circle cx="95" cy="150" r="4"/><circle cx="91" cy="150" r="3"/><circle cx="99" cy="150" r="3"/><circle cx="95" cy="146" r="3"/><circle cx="95" cy="154" r="3"/>
+                                <circle cx="130" cy="170" r="4"/><circle cx="126" cy="170" r="3"/><circle cx="134" cy="170" r="3"/><circle cx="130" cy="166" r="3"/><circle cx="130" cy="174" r="3"/>
+                                <circle cx="70" cy="185" r="4"/><circle cx="66" cy="185" r="3"/><circle cx="74" cy="185" r="3"/><circle cx="70" cy="181" r="3"/><circle cx="70" cy="189" r="3"/>
+                                <circle cx="105" cy="210" r="4"/><circle cx="101" cy="210" r="3"/><circle cx="109" cy="210" r="3"/><circle cx="105" cy="206" r="3"/><circle cx="105" cy="214" r="3"/>
+                            </g>
+                            <!-- Full Sleeves -->
+                            <path d="M 65 85 Q 40 100 52 140" stroke="#78350f" stroke-width="14" stroke-linecap="round" fill="none"/>
+                            <path d="M 135 85 Q 160 100 148 140" stroke="#78350f" stroke-width="14" stroke-linecap="round" fill="none"/>
+                        ` : `
+                            <!-- Boy (Age 15): Shirt colour changes to WHITE (white full sleeve shirt) -->
+                            <path d="M 65 85 Q 100 80 135 85 L 130 152 Q 100 156 70 152 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+                            <!-- Collar -->
+                            <polygon points="82,85 100,98 118,85" fill="#e2e8f0"/>
+                            <!-- Full Sleeves -->
+                            <path d="M 65 85 L 48 140" stroke="#ffffff" stroke-width="15" stroke-linecap="round"/>
+                            <path d="M 135 85 L 148 140" stroke="#ffffff" stroke-width="15" stroke-linecap="round"/>
+                        `}
+                    </g>
+
+                    <!-- 3. Arms & Hands Poses (Girl: Both hands touching hair / Boy: Left hand in pant pocket) -->
+                    ${isGirl ? `
+                        <!-- Girl: Both hands touching her shoulder-length ponytail hair -->
+                        <g class="girl-hands-touch-hair">
+                            <path d="M 65 88 Q 38 75 52 48" stroke="${skinColor}" stroke-width="12" stroke-linecap="round" fill="none"/>
+                            <circle cx="52" cy="46" r="7" fill="${skinColor}"/>
+                            <path d="M 135 88 Q 162 75 148 48" stroke="${skinColor}" stroke-width="12" stroke-linecap="round" fill="none"/>
+                            <circle cx="148" cy="46" r="7" fill="${skinColor}"/>
+                        </g>
+                    ` : `
+                        <!-- Boy: Left hand inside left pant pocket -->
+                        <g class="boy-arm-pocket">
+                            <path d="M 60 88 Q 45 115 50 140" stroke="${skinColor}" stroke-width="14" stroke-linecap="round" fill="none"/>
+                            <circle cx="50" cy="142" r="8" fill="${skinColor}"/>
+                            
+                            <path d="M 140 88 Q 158 115 130 152" stroke="${skinColor}" stroke-width="14" stroke-linecap="round" fill="none"/>
+                            <ellipse cx="128" cy="152" rx="8" ry="10" fill="${skinColor}"/>
+                        </g>
+                    `}
+
+                    <!-- 4. Head & Hair (Messy brown hair for Boy / Ponytail hair for Girl) -->
+                    <g class="teen15-head">
+                        <circle cx="58" cy="52" r="10" fill="${skinColor}" stroke="${skinShadow}" stroke-width="1.5"/>
+                        <circle cx="142" cy="52" r="10" fill="${skinColor}" stroke="${skinShadow}" stroke-width="1.5"/>
+
+                        <circle cx="100" cy="52" r="44" fill="${skinColor}" stroke="${skinShadow}" stroke-width="1.5"/>
+
+                        ${isGirl ? `
+                            <!-- Girl: Ponytail hair reaching shoulder length -->
+                            <g class="girl-ponytail-hair">
+                                <path d="M 142 40 Q 170 60 162 105 C 150 108 140 95 144 65 Z" fill="#5c3d2e"/>
+                                <path d="M 58 40 Q 30 60 38 105 C 50 108 60 95 56 65 Z" fill="#5c3d2e"/>
+                                <path d="M 58 38 C 45 15, 80 12, 100 18 C 120 12, 155 15, 142 38 C 130 25, 70 25, 58 38 Z" fill="#7c523e"/>
+                                <circle cx="140" cy="42" r="6" fill="#78350f"/>
+                            </g>
+                        ` : `
+                            <!-- Boy: Messy Brown Hair -->
+                            <g class="boy-messy-brown-hair">
+                                <path d="M 52 40 C 38 16, 70 10, 92 18 C 108 8, 148 16, 148 42 C 134 24, 114 22, 102 28 Q 78 24 52 40 Z" fill="#5c3d2e"/>
+                                <path d="M 58 30 L 70 12 L 78 24 L 92 8 L 106 22 L 122 10 L 138 28" stroke="#7c523e" stroke-width="4" stroke-linecap="round" fill="none"/>
+                            </g>
+                        `}
+
+                        <!-- Rosy Cheeks -->
+                        <ellipse cx="70" cy="60" rx="9" ry="6" fill="url(#teen15CheekBlush)"/>
+                        <ellipse cx="130" cy="60" rx="9" ry="6" fill="url(#teen15CheekBlush)"/>
+
+                        <!-- 5. DYNAMIC FACIAL EXPRESSIONS DIRECTLY ON SVG FACE -->
+                        ${expr === 'healthy' ? `
+                            <!-- HEALTHY OPTION CHOSEN: UNLIKE / RELUCTANT EXPRESSION -->
+                            <path d="M 70 38 L 88 44" stroke="#3b2314" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M 112 44 L 130 38" stroke="#3b2314" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M 72 48 L 84 54 L 72 60" fill="none" stroke="#3b2314" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M 128 48 L 116 54 L 128 60" fill="none" stroke="#3b2314" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M 84 72 Q 92 66 100 72 Q 108 78 116 72" fill="none" stroke="#be123c" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M 142 34 C 138 40 142 46 146 46 C 150 46 154 40 146 34 Z" fill="#38bdf8"/>
+                        ` : (expr === 'unhealthy' ? `
+                            <!-- UNHEALTHY OPTION CHOSEN: CHEERING UP / SUPER HAPPY / LIKE EXPRESSION -->
+                            <path d="M 70 34 Q 80 24 90 34" stroke="#3b2314" stroke-width="3" fill="none" stroke-linecap="round"/>
+                            <path d="M 110 34 Q 120 24 130 34" stroke="#3b2314" stroke-width="3" fill="none" stroke-linecap="round"/>
+                            <g>
+                                <circle cx="81" cy="48" r="10" fill="#0284c7"/>
+                                <circle cx="119" cy="48" r="10" fill="#0284c7"/>
+                                <circle cx="81" cy="48" r="6" fill="#0f172a"/>
+                                <circle cx="119" cy="48" r="6" fill="#0f172a"/>
+                                <circle cx="78" cy="45" r="3.5" fill="#ffffff"/>
+                                <circle cx="116" cy="45" r="3.5" fill="#ffffff"/>
+                            </g>
+                            <path d="M 80 66 Q 100 94 120 66 Z" fill="#e63946" stroke="#be123c" stroke-width="2.5"/>
+                            <path d="M 86 78 Q 100 86 114 78" fill="#ff85a1"/>
+                            <path d="M 84 67 L 116 67" stroke="#ffffff" stroke-width="2.5"/>
+                        ` : `
+                            <!-- NORMAL / IDLE EXPRESSION (NO OPTION CHOSEN YET) -->
+                            <path d="M 70 38 Q 80 32 90 38" stroke="#3b2314" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                            <path d="M 110 38 Q 120 32 130 38" stroke="#3b2314" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                            <g>
+                                <circle cx="81" cy="48" r="9" fill="#0284c7"/>
+                                <circle cx="119" cy="48" r="9" fill="#0284c7"/>
+                                <circle cx="81" cy="48" r="5" fill="#0f172a"/>
+                                <circle cx="119" cy="48" r="5" fill="#0f172a"/>
+                                <circle cx="78" cy="45" r="3" fill="#ffffff"/>
+                                <circle cx="116" cy="45" r="3" fill="#ffffff"/>
+                            </g>
+                            <path d="M 84 68 Q 100 82 116 68" fill="none" stroke="#be123c" stroke-width="3" stroke-linecap="round"/>
+                        `)}
+                    </g>
+                </svg>
+            </div>`;
+        }
 
         case 6: // Age 30 Adult
             return `
@@ -1032,9 +1306,9 @@ const lifeStages = [
         ]
     },
     {
-        stageName: "YOUNG ADULT (Age 18)",
-        title: "Independent Living",
-        description: "You are becoming a young adult. Your daily routines build long term health.",
+        stageName: "TEENAGER (Age 15)",
+        title: "Independent Living & Style",
+        description: "You are growing taller (Height +5cm for Girl / +7cm for Boy). Your daily routines build long term health.",
         bgClass: "adult-room",
         choices: [
             {
