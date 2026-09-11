@@ -559,22 +559,192 @@ function getCharacterCartoonSVG(stageIndex, gender = 'boy', health = 80, energy 
             </div>`;
         }
 
-        case 3: // Age 9 Older Kid
+        case 3: { // Age 9 School Age Kid (HD 2D Cartoon Boy & Girl matching Reference Images Leo & Maya)
+            const expr = chosenExpression || 'normal';
+            const skinColor = "#ffe0d1";
+            const skinShadow = "#f7bca0";
+
             return `
-            <svg viewBox="0 0 120 190" class="cartoon-char-svg kid-anim">
-                <rect x="42" y="130" width="12" height="42" rx="6" fill="${pantsColor}" />
-                <rect x="66" y="130" width="12" height="42" rx="6" fill="${pantsColor}" />
-                <ellipse cx="48" cy="172" rx="11" ry="6" fill="#6366f1" />
-                <ellipse cx="72" cy="172" rx="11" ry="6" fill="#6366f1" />
-                <path d="M 30 68 Q 60 62 90 68 L 86 130 Q 60 133 34 130 Z" fill="${shirtColor}" />
-                <!-- Cool Graphic Stripe -->
-                <rect x="45" y="80" width="30" height="20" rx="4" fill="#facc15"/>
-                <circle cx="60" cy="40" r="25" fill="${skinColor}" />
-                <path d="M 34 35 C 30 10, 90 10, 86 35 Z" fill="${hairColor}" />
-                <circle cx="48" cy="38" r="4" fill="#0f172a" />
-                <circle cx="72" cy="38" r="4" fill="#0f172a" />
-                <path d="M 52 48 Q 60 55 68 48" fill="none" stroke="#e11d48" stroke-width="3" stroke-linecap="round"/>
-            </svg>`;
+            <div class="detailed-school-container stage3-student">
+                <svg viewBox="0 0 200 240" class="cartoon-char-svg school-detailed-svg">
+                    <defs>
+                        <radialGradient id="schoolCheekBlush" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#ff7b92" stop-opacity="0.8" />
+                            <stop offset="100%" stop-color="#ff7b92" stop-opacity="0" />
+                        </radialGradient>
+                    </defs>
+
+                    <!-- 1. Standing Legs & Black School Shoes (Both Boy & Girl wear black shoes) -->
+                    <g class="school-legs">
+                        ${isGirl ? `
+                            <!-- Girl: Grey School Skirt & White Knee Socks -->
+                            <path d="M 68 140 L 132 140 L 140 172 Q 100 176 60 172 Z" fill="#475569" stroke="#334155" stroke-width="1.5"/>
+                            <rect x="74" y="172" width="14" height="28" fill="${skinColor}"/>
+                            <rect x="112" y="172" width="14" height="28" fill="${skinColor}"/>
+                            <!-- White Knee Socks -->
+                            <rect x="72" y="194" width="18" height="18" rx="3" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+                            <rect x="110" y="194" width="18" height="18" rx="3" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+                        ` : `
+                            <!-- Boy: Grey School Trousers/Pants -->
+                            <rect x="70" y="145" width="22" height="55" rx="4" fill="#475569" stroke="#334155" stroke-width="1.5"/>
+                            <rect x="108" y="145" width="22" height="55" rx="4" fill="#475569" stroke="#334155" stroke-width="1.5"/>
+                        `}
+
+                        <!-- Black School Shoes (Ref Images: "both wore black shoes") -->
+                        <path d="M 64 210 C 64 204 88 202 94 210 L 94 222 L 62 222 Z" fill="#0f172a" stroke="#000000" stroke-width="2"/>
+                        <rect x="60" y="218" width="36" height="5" rx="2" fill="#334155"/>
+                        <circle cx="78" cy="208" r="2" fill="#ffffff"/>
+
+                        <path d="M 106 210 C 106 204 130 202 136 210 L 138 222 L 106 222 Z" fill="#0f172a" stroke="#000000" stroke-width="2"/>
+                        <rect x="104" y="218" width="36" height="5" rx="2" fill="#334155"/>
+                        <circle cx="122" cy="208" r="2" fill="#ffffff"/>
+                    </g>
+
+                    <!-- 2. Torso Outfit (Boy: Messi blue/white shirt / Girl: Uniform shirt, tie & skirt) -->
+                    <g class="school-torso">
+                        ${isGirl ? `
+                            <!-- Girl Uniform: Full Sleeve White/Blue Shirt with Red Necktie -->
+                            <path d="M 68 85 Q 100 80 132 85 L 128 145 Q 100 148 72 145 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+                            <!-- Collar -->
+                            <polygon points="85,85 100,98 115,85" fill="#e2e8f0"/>
+                            <!-- Red School Necktie -->
+                            <polygon points="96,88 104,88 106,122 100,128 94,122" fill="#dc2626" stroke="#991b1b" stroke-width="1.5"/>
+                            <!-- Full Sleeves -->
+                            <path d="M 60 88 L 45 130" stroke="#0284c7" stroke-width="14" stroke-linecap="round"/>
+                            <path d="M 140 88 L 155 130" stroke="#0284c7" stroke-width="14" stroke-linecap="round"/>
+                        ` : `
+                            <!-- Boy: Half Sleeve Blue & White Combination Shirt printed with "MESSI" -->
+                            <path d="M 68 85 Q 100 80 132 85 L 128 148 Q 100 152 72 148 Z" fill="#ffffff"/>
+                            <!-- Blue Vertical Stripes & Panels (Messi Argentina / Inter Miami Blue & White) -->
+                            <rect x="70" y="85" width="18" height="63" fill="#3b82f6"/>
+                            <rect x="112" y="85" width="18" height="63" fill="#3b82f6"/>
+                            <!-- "MESSI 10" Print on Chest -->
+                            <rect x="80" y="105" width="40" height="22" rx="4" fill="#1e3a8a"/>
+                            <text x="100" y="116" font-family="sans-serif" font-size="8" font-weight="900" fill="#ffffff" text-anchor="middle">MESSI</text>
+                            <text x="100" y="124" font-family="sans-serif" font-size="7" font-weight="900" fill="#facc15" text-anchor="middle">10</text>
+                            <!-- Half Sleeves -->
+                            <path d="M 68 85 L 50 110" stroke="#3b82f6" stroke-width="16" stroke-linecap="round"/>
+                            <path d="M 132 85 L 150 110" stroke="#ffffff" stroke-width="16" stroke-linecap="round"/>
+                        `}
+                    </g>
+
+                    <!-- 3. Bags & Arm Positions (Boy left hand: Black Scoobie Day bag / Girl right hand: Red Acer bag) -->
+                    ${isGirl ? `
+                        <!-- Girl Right Arm holding Red Acer Bag (girls right hand red acer bag) -->
+                        <g class="girl-acer-bag">
+                            <path d="M 60 88 Q 42 110 50 130" stroke="${skinColor}" stroke-width="12" stroke-linecap="round" fill="none"/>
+                            <circle cx="50" cy="132" r="7" fill="${skinColor}"/>
+                            <!-- Red Acer Backpack in Hand -->
+                            <rect x="28" y="125" width="28" height="38" rx="8" fill="#dc2626" stroke="#991b1b" stroke-width="2"/>
+                            <rect x="34" y="132" width="16" height="12" rx="3" fill="#ef4444"/>
+                            <text x="42" y="141" font-family="sans-serif" font-size="6" font-weight="900" fill="#ffffff" text-anchor="middle">ACER</text>
+                        </g>
+
+                        <!-- Girl Left Arm resting naturally -->
+                        <g class="girl-left-arm">
+                            <path d="M 140 88 Q 155 110 148 130" stroke="${skinColor}" stroke-width="12" stroke-linecap="round" fill="none"/>
+                            <circle cx="148" cy="132" r="7" fill="${skinColor}"/>
+                        </g>
+                    ` : `
+                        <!-- Boy Right Arm resting naturally -->
+                        <g class="boy-right-arm">
+                            <path d="M 60 88 Q 45 110 52 130" stroke="${skinColor}" stroke-width="14" stroke-linecap="round" fill="none"/>
+                            <circle cx="52" cy="132" r="8" fill="${skinColor}"/>
+                        </g>
+
+                        <!-- Boy Left Arm holding Black Scoobie Day Bag (boys left hand blag colour scoopie day bag) -->
+                        <g class="boy-scoobie-bag">
+                            <path d="M 140 88 Q 158 110 150 130" stroke="${skinColor}" stroke-width="14" stroke-linecap="round" fill="none"/>
+                            <circle cx="150" cy="132" r="8" fill="${skinColor}"/>
+                            <!-- Black Scoobie Day Bag in Hand -->
+                            <rect x="144" y="125" width="30" height="40" rx="8" fill="#0f172a" stroke="#000000" stroke-width="2"/>
+                            <rect x="150" y="132" width="18" height="12" rx="3" fill="#334155"/>
+                            <text x="159" y="140" font-family="sans-serif" font-size="5" font-weight="900" fill="#38bdf8" text-anchor="middle">SCOOBIE</text>
+                            <text x="159" y="146" font-family="sans-serif" font-size="4" font-weight="900" fill="#facc15" text-anchor="middle">DAY</text>
+                        </g>
+                    `}
+
+                    <!-- 4. Head & Hair (Girl: Pigtails with ribbons / Boy: Spiky Messy Black Hair Ref Images) -->
+                    <g class="school-head">
+                        <circle cx="58" cy="54" r="10" fill="${skinColor}" stroke="${skinShadow}" stroke-width="1.5"/>
+                        <circle cx="142" cy="54" r="10" fill="${skinColor}" stroke="${skinShadow}" stroke-width="1.5"/>
+
+                        <circle cx="100" cy="54" r="44" fill="${skinColor}" stroke="${skinShadow}" stroke-width="1.5"/>
+
+                        ${isGirl ? `
+                            <!-- Girl Hair: Fluffy Curly Brown Pigtails & Blue Bows (Ref Image Maya) -->
+                            <g class="girl-pigtails">
+                                <circle cx="48" cy="28" r="15" fill="#854d0e"/>
+                                <circle cx="152" cy="28" r="15" fill="#854d0e"/>
+                                <!-- Blue Bows -->
+                                <path d="M 40 24 C 32 18 32 32 44 28 C 32 32 46 40 48 30 Z" fill="#2563eb"/>
+                                <path d="M 160 24 C 168 18 168 32 156 28 C 168 32 154 40 152 30 Z" fill="#2563eb"/>
+                                <path d="M 60 38 Q 100 20 140 38 Q 122 28 100 30 Q 78 28 60 38 Z" fill="#a16207"/>
+                            </g>
+                        ` : `
+                            <!-- Boy Hair: Spiky Messy Black Hair (Ref Image Leo) -->
+                            <g class="boy-spiky-hair">
+                                <path d="M 52 42 C 38 18, 70 10, 92 18 C 108 8, 148 16, 148 44 C 134 26, 114 24, 102 30 Q 78 26 52 42 Z" fill="#0f172a"/>
+                                <path d="M 58 32 L 72 14 L 80 26 L 94 10 L 108 24 L 124 12 L 138 30" stroke="#1e293b" stroke-width="4" stroke-linecap="round" fill="none"/>
+                            </g>
+                        `}
+
+                        <!-- Rosy Cheeks -->
+                        <ellipse cx="70" cy="62" rx="9" ry="6" fill="url(#schoolCheekBlush)"/>
+                        <ellipse cx="130" cy="62" rx="9" ry="6" fill="url(#schoolCheekBlush)"/>
+
+                        <!-- 5. DYNAMIC FACIAL EXPRESSIONS DIRECTLY ON SVG FACE -->
+                        ${expr === 'healthy' ? `
+                            <!-- HEALTHY OPTION CHOSEN: RELUCTANT / UNLIKE EXPRESSION -->
+                            <path d="M 70 40 L 88 46" stroke="#3b2314" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M 112 46 L 130 40" stroke="#3b2314" stroke-width="3.5" stroke-linecap="round"/>
+                            
+                            <!-- Annoyed Squeezed Eyes (> <) -->
+                            <path d="M 72 50 L 84 56 L 72 62" fill="none" stroke="#3b2314" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M 128 50 L 116 56 L 128 62" fill="none" stroke="#3b2314" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+                            <!-- Pouting Wavy Dislike Mouth -->
+                            <path d="M 84 74 Q 92 68 100 74 Q 108 80 116 74" fill="none" stroke="#be123c" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M 142 36 C 138 42 142 48 146 48 C 150 48 154 42 146 36 Z" fill="#38bdf8"/>
+                        ` : (expr === 'unhealthy' ? `
+                            <!-- UNHEALTHY OPTION CHOSEN: CHEERING UP / SUPER HAPPY / LIKE EXPRESSION -->
+                            <path d="M 70 36 Q 80 26 90 36" stroke="#3b2314" stroke-width="3" fill="none" stroke-linecap="round"/>
+                            <path d="M 110 36 Q 120 26 130 36" stroke="#3b2314" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+                            <g>
+                                <circle cx="81" cy="50" r="10" fill="#0284c7"/>
+                                <circle cx="119" cy="50" r="10" fill="#0284c7"/>
+                                <circle cx="81" cy="50" r="6" fill="#0f172a"/>
+                                <circle cx="119" cy="50" r="6" fill="#0f172a"/>
+                                <circle cx="78" cy="47" r="3.5" fill="#ffffff"/>
+                                <circle cx="116" cy="47" r="3.5" fill="#ffffff"/>
+                            </g>
+
+                            <!-- Big Open Laughing Cheering Smile -->
+                            <path d="M 80 68 Q 100 96 120 68 Z" fill="#e63946" stroke="#be123c" stroke-width="2.5"/>
+                            <path d="M 86 80 Q 100 88 114 80" fill="#ff85a1"/>
+                            <path d="M 84 69 L 116 69" stroke="#ffffff" stroke-width="2.5"/>
+                        ` : `
+                            <!-- NORMAL / IDLE EXPRESSION (NO OPTION CHOSEN YET) -->
+                            <path d="M 70 40 Q 80 34 90 40" stroke="#3b2314" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                            <path d="M 110 40 Q 120 34 130 40" stroke="#3b2314" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+                            <g>
+                                <circle cx="81" cy="50" r="9" fill="#0284c7"/>
+                                <circle cx="119" cy="50" r="9" fill="#0284c7"/>
+                                <circle cx="81" cy="50" r="5" fill="#0f172a"/>
+                                <circle cx="119" cy="50" r="5" fill="#0f172a"/>
+                                <circle cx="78" cy="47" r="3" fill="#ffffff"/>
+                                <circle cx="116" cy="47" r="3" fill="#ffffff"/>
+                            </g>
+
+                            <!-- Sweet Normal Student Smile -->
+                            <path d="M 84 70 Q 100 84 116 70" fill="none" stroke="#be123c" stroke-width="3" stroke-linecap="round"/>
+                        `)}
+                    </g>
+                </svg>
+            </div>`;
+        }
 
         case 4: // Age 12 Teenager
             return `
@@ -776,6 +946,7 @@ const lifeStages = [
         title: "Daily Choices & Food",
         description: "Your daily habits and food choices start shaping your energy and health.",
         bgClass: "school-room",
+        hasSchoolProps: true,
         choices: [
             {
                 name: "🍛 Dosa & Sambar",
@@ -1107,7 +1278,10 @@ function loadStage(index) {
     if (index === 2) {
         gameState.stage2Expression = 'normal';
     }
-    const currentExpr = index === 1 ? (gameState.stage1Expression || 'normal') : (index === 2 ? (gameState.stage2Expression || 'normal') : 'normal');
+    if (index === 3) {
+        gameState.stage3Expression = 'normal';
+    }
+    const currentExpr = index === 1 ? (gameState.stage1Expression || 'normal') : (index === 2 ? (gameState.stage2Expression || 'normal') : (index === 3 ? (gameState.stage3Expression || 'normal') : 'normal'));
     avatarGraphic.innerHTML = getCharacterCartoonSVG(index, gameState.gender, gameState.health, gameState.energy, isNewbornCrying, currentExpr);
 
     const exprBadge = document.getElementById("expressionBadge");
@@ -1168,6 +1342,17 @@ function loadStage(index) {
             <div class="prop-tv">
                 <div class="tv-screen">📺</div>
             </div>
+        `;
+    }
+    if (stage.hasSchoolProps) {
+        sceneProps.innerHTML = `
+            <div class="school-room-baseboard"></div>
+            <div class="school-bulletin-board">
+                <div class="bulletin-header">🏫 OAKWOOD ELEMENTARY</div>
+                <div class="bulletin-notes">📝 📌 📜</div>
+            </div>
+            <div class="prop-school-lockers" title="School Lockers">🚪🚪</div>
+            <div class="prop-school-desk" title="Classroom Desk">🪑📚</div>
         `;
     }
 
@@ -1286,6 +1471,23 @@ function handleChoiceClick(choice) {
         }
         if (avatarGraphic) {
             avatarGraphic.innerHTML = getCharacterCartoonSVG(2, gameState.gender, gameState.health, gameState.energy, false, gameState.stage2Expression);
+        }
+        setTimeout(() => {
+            nextStage();
+        }, 1800);
+        return;
+    }
+
+    // In Stage 3 School Age 9: Facial expression updates on character face SVG
+    if (gameState.currentStageIndex === 3) {
+        const avatarGraphic = document.getElementById("avatarGraphic");
+        if (choice.isHealthy) {
+            gameState.stage3Expression = 'healthy';
+        } else {
+            gameState.stage3Expression = 'unhealthy';
+        }
+        if (avatarGraphic) {
+            avatarGraphic.innerHTML = getCharacterCartoonSVG(3, gameState.gender, gameState.health, gameState.energy, false, gameState.stage3Expression);
         }
         setTimeout(() => {
             nextStage();
