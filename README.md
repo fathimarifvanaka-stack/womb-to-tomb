@@ -3,12 +3,11 @@
 # WOMB TO TOMB 🎯
 
 ## Basic Details
-### Team Name: Womb To Tomb Devs
+### Team Name: Blooms
 
 ### Team Members
-- Team Lead: Dilshad - College
-- Member 2: Fathima Rifvana - College
-- Member 3: Ramees - College
+- Member 1: Fathima Rifvana
+- Member 2: haneena thasni
 
 ### Project Description
 WOMB TO TOMB is an interactive web-based life simulation game where every single choice you make—from baby diaper changes and toddler snacks to school habits and adult fitness—dynamically sculpts your cartoon avatar's physical appearance, posture, and life progression from birth to old age.
