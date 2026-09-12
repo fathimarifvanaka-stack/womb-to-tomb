@@ -2534,3 +2534,237 @@ body {
     line-height: 1.4;
     color: #e2e8f0;
 }
+
+/* =========================================================
+   7. MOBILE RESPONSIVENESS & SHORT VIEWPORT MINIMIZATION
+========================================================= */
+@media (max-width: 500px) {
+    body {
+        padding: 0;
+    }
+
+    #gameApp {
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+        height: 100vh;
+        height: 100dvh;
+    }
+}
+
+/* Medium height mobile screens (e.g. 740px - 780px) */
+@media (max-height: 780px) {
+    .hud-bar {
+        padding: 8px 12px;
+    }
+
+    .stat-pill {
+        padding: 4px 8px;
+        max-width: 90px;
+    }
+
+    .stat-icon {
+        font-size: 14px;
+    }
+
+    .stat-label {
+        font-size: 8px;
+    }
+
+    .stat-value {
+        font-size: 11px;
+    }
+
+    .timer-pill {
+        padding: 4px 8px;
+        font-size: 12px;
+    }
+
+    .game-viewport {
+        padding: 10px 12px;
+        gap: 6px;
+    }
+
+    .scene-container {
+        height: 220px;
+        border-radius: 20px;
+    }
+
+    .character-wrapper {
+        transform: scale(0.88);
+    }
+
+    .event-card {
+        padding: 8px 12px;
+        margin: 4px 0;
+    }
+
+    .stage-tag {
+        font-size: 9px;
+        letter-spacing: 1px;
+        margin-bottom: 2px;
+    }
+
+    .event-title {
+        font-size: 16px;
+    }
+
+    .event-desc {
+        font-size: 12px;
+    }
+
+    .choices-grid {
+        gap: 8px;
+    }
+
+    .choice-card {
+        padding: 8px 6px;
+        border-radius: 14px;
+    }
+
+    .choice-img {
+        font-size: 28px;
+        margin-bottom: 2px;
+    }
+
+    .choice-name {
+        font-size: 12px;
+    }
+}
+
+/* Compact mobile screens (e.g. 660px - 720px) */
+@media (max-height: 720px) {
+    .hud-bar {
+        padding: 6px 10px;
+    }
+
+    .game-viewport {
+        padding: 8px 10px;
+        gap: 4px;
+    }
+
+    .scene-container {
+        height: 185px;
+        border-radius: 16px;
+    }
+
+    .character-wrapper {
+        transform: scale(0.78);
+    }
+
+    .event-card {
+        padding: 6px 10px;
+        margin: 2px 0;
+    }
+
+    .stage-tag {
+        font-size: 8px;
+    }
+
+    .event-title {
+        font-size: 15px;
+    }
+
+    .event-desc {
+        font-size: 11px;
+    }
+
+    .choices-grid {
+        gap: 6px;
+    }
+
+    .choice-card {
+        padding: 6px 4px;
+    }
+
+    .choice-img {
+        font-size: 24px;
+        margin-bottom: 2px;
+    }
+
+    .choice-name {
+        font-size: 11px;
+    }
+}
+
+/* Small / Extra Short mobile screens (e.g. <= 600px) */
+@media (max-height: 600px) {
+    .hud-bar {
+        padding: 4px 8px;
+    }
+
+    .stat-pill {
+        padding: 2px 6px;
+    }
+
+    .game-viewport {
+        padding: 6px 8px;
+    }
+
+    .scene-container {
+        height: 145px;
+        border-radius: 14px;
+    }
+
+    .character-wrapper {
+        transform: scale(0.65);
+    }
+
+    .event-card {
+        padding: 4px 8px;
+        margin: 2px 0;
+    }
+
+    .event-title {
+        font-size: 13px;
+    }
+
+    .event-desc {
+        font-size: 10px;
+    }
+
+    .choice-card {
+        padding: 4px 2px;
+    }
+
+    .choice-img {
+        font-size: 20px;
+    }
+
+    .choice-name {
+        font-size: 10px;
+    }
+}
+
+/* Modals responsiveness */
+@media (max-height: 700px) {
+    .diaper-card,
+    .minigame-card,
+    .event-modal-card {
+        padding: 14px;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .diaper-baby-view {
+        margin: 10px 0;
+        padding: 10px;
+    }
+
+    .dirty-baby-avatar {
+        font-size: 50px;
+    }
+
+    .minigame-arena {
+        height: 120px;
+        margin: 10px 0;
+    }
+
+    .football-goal {
+        font-size: 45px;
+    }
+
+    .football-ball {
+        font-size: 28px;
+    }
+}
