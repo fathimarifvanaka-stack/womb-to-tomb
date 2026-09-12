@@ -48,7 +48,7 @@ For Software:
 
 # Screenshots
 ![Main Menu](https://raw.githubusercontent.com/fathimarifvanaka-stack/womb-to-tomb/main/index.html)
-*Main Menu screen with gender selection (Boy / Girl) and dynamic interactive scene background*
+*Main - Menu screen with gender selection (Boy / Girl) and dynamic interactive scene background*
 
 ![Hospital Room Stage](https://raw.githubusercontent.com/fathimarifvanaka-stack/womb-to-tomb/main/hospital.html)
 *Newborn stage with interactive diaper choices and dynamic character expressions*
